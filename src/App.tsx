@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -50,10 +51,16 @@ table {
   border-spacing: 0;
 }
 * {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
 }
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Noto Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-top: -30px;
+
 }
 a {
   text-decoration:none;
@@ -63,7 +70,12 @@ a {
 `;
 
 function App() {
-  return <div>hello</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <Router />
+    </>
+  );
 }
 
 export default App;

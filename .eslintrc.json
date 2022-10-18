@@ -16,8 +16,9 @@
     }
   },
   "globals": { "_": true },
-  "plugins": ["import", "html"],
-  "extends": ["airbnb-base", "prettier", "react-app"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier", "react-app"],
   "rules": {
     "no-console": "warn",
     "no-plusplus": "off",
