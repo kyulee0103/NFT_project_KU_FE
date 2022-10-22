@@ -5,6 +5,8 @@ import Spon1 from '../../assets/bv.png';
 import Spon2 from '../../assets/next.png';
 import Spon3 from '../../assets/yon.png';
 import Spon4 from '../../assets/klaytn.png';
+import ScrollRevealSlideAnimation from './MyAnimation';
+import { useState, useEffect } from 'react';
 
 const LastPage = styled.div`
   height: 100vh;
@@ -36,6 +38,7 @@ const InsideContent = styled.div`
 const Text = styled.div``;
 const CarouselBox = styled.div`
   height: 230px;
+
   /* margin-top: 30px; */
 `;
 const Sponsor = styled.div`
@@ -92,6 +95,18 @@ const SponImg = styled.div`
 `;
 
 function LastBox() {
+  // const [move, setMove] = useState<boolean>(false);
+  // const handleScroll = () => {
+  //   const isMoved = window.scrollY >= window.innerHeight * 2.5;
+  //   setMove(isMoved);
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
+
   return (
     <Wrapper>
       <LastPage>
@@ -99,18 +114,24 @@ function LastBox() {
       </LastPage>
       <InsideContent width={window.innerWidth}>
         <Text>
-          <Top>
-            <Title>버미와 수리의</Title>
-            <Title>통큰 이벤트</Title>
-            <Title>가보자고 (۶•̀ᴗ•́)۶</Title>
-          </Top>
-          <Middle>
-            <p>정기전 결과 예측 게임에 참여해주세요!</p>
-            <span>경기 예측 결과를 통해 푸짐한 경품에 응모하실 수 있습니다!!</span>
-          </Middle>
+          <ScrollRevealSlideAnimation reLoading={false} direction="top">
+            <div>
+              <Top>
+                <Title>버미와 수리의</Title>
+                <Title>통큰 이벤트</Title>
+                <Title>가보자고 (۶•̀ᴗ•́)۶</Title>
+              </Top>
+              <Middle>
+                <p>정기전 결과 예측 게임에 참여해주세요!</p>
+                <span>경기 예측 결과를 통해 푸짐한 경품에 응모하실 수 있습니다!!</span>
+              </Middle>
+            </div>
+          </ScrollRevealSlideAnimation>
+
           <CarouselBox>
             <Carousel />
           </CarouselBox>
+
           <Sponsor>
             <SponTitle>
               <p>주최</p>

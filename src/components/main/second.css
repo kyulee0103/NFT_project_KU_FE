@@ -1,0 +1,21 @@
+.moveR-enter {
+  opacity: 0;
+  transform: translateX(80%);
+}
+
+.moveR-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 2000ms, transform 2000ms;
+}
+
+.moveL-enter {
+  opacity: 0;
+  transform: translateX(-80%);
+}
+
+.moveL-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 2000ms, transform 2000ms;
+}

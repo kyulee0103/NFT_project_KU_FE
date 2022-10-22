@@ -8,11 +8,16 @@ import { useRef, useEffect } from 'react';
 
 const Total = styled.div`
   width: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  /* background-image: url('../assets/backGroundImg.svg'); */
+  background-size: cover;
+  background-color: #0e0e0e;
 `;
 
 const Page = styled.div`
-  height: 90vh;
-  margin-bottom: 8vh;
+  height: 100vh;
+  margin-bottom: 6vh;
 `;
 
 const BTNdiv = styled.div`
@@ -44,10 +49,9 @@ function Main() {
     if (!targetRef.current) {
       return;
     }
-    if (window.scrollY > 300) {
+    if (window.scrollY > 531) {
       targetRef.current.style.visibility = 'visible';
-      console.log('hey');
-    } else if (window.scrollY <= 300) {
+    } else if (window.scrollY <= 531) {
       targetRef.current.style.visibility = 'hidden';
     }
   };
@@ -65,7 +69,7 @@ function Main() {
       <Page>
         <First />
         <BTNdiv className="fade-in-img" ref={targetRef}>
-          <button>버미와 수리 만나러 가기</button>
+          <button className="blink">버미와 수리 만나러 가기</button>
         </BTNdiv>
       </Page>
       <Page>

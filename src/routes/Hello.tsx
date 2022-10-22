@@ -2,15 +2,21 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import './main.css';
 import animationData from '../assets/78790-hello.json';
+import { Link } from 'react-router-dom';
+
+interface IHeight {
+  height: number;
+}
 
 const LogoDIv = styled.div`
-  height: 100vh;
+  height: ${(props: IHeight) => props.height};
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
+  min-height: 90vh;
 `;
 
 function Hello() {
@@ -30,8 +36,11 @@ function Hello() {
   }, []);
 
   return (
-    <LogoDIv>
+    <LogoDIv height={window.innerHeight}>
       <Lottie animationData={animationData}></Lottie>
+      {/* <button>
+        <Link to="/start">눌러봐</Link>
+      </button> */}
     </LogoDIv>
   );
 }

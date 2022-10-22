@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import Cross from '../../assets/crossLine.png';
+import Cross from '../../assets/crossline.png';
+import ScrollRevealSlideAnimation from './MyAnimation';
 
 const Text = styled.div`
   margin-top: 30px;
-  /* width: 100%; */
-  /* background-color: blue; */
   color: white;
   margin-left: 30px;
 `;
@@ -27,8 +26,8 @@ const SmallBox = styled.div`
 
 const CrossImg = styled.div`
   position: relative;
-  left: 10vw;
-  top: -10px;
+  left: 13vw;
+  top: 0px;
 `;
 
 interface IInsideContent {
@@ -46,17 +45,21 @@ const ThirdBox = styled.div`
 function Third() {
   return (
     <ThirdBox>
-      <Text>
-        <BigT>1500마리의 버미,</BigT>
-        <BigT>1500마리의 수리!</BigT>
-        <SmallBox>
-          <SmallT>블록체인 기술을 활용해 만들어진</SmallT>
-          <SmallT>대체 불가능 토큰 버미 & 수리 NFT</SmallT>
-        </SmallBox>
-      </Text>
-      <CrossImg>
-        <Img src={Cross} width={window.innerWidth * 1.2} />
-      </CrossImg>
+      <ScrollRevealSlideAnimation direction="right" reLoading={false}>
+        <Text>
+          <BigT>1500마리의 버미,</BigT>
+          <BigT>1500마리의 수리!</BigT>
+          <SmallBox>
+            <SmallT>블록체인 기술을 활용해 만들어진</SmallT>
+            <SmallT>대체 불가능 토큰 버미 & 수리 NFT</SmallT>
+          </SmallBox>
+        </Text>
+      </ScrollRevealSlideAnimation>
+      <ScrollRevealSlideAnimation direction="left" reLoading={false}>
+        <CrossImg>
+          <Img src={Cross} width={window.innerWidth * 1.2} />
+        </CrossImg>
+      </ScrollRevealSlideAnimation>
     </ThirdBox>
   );
 }

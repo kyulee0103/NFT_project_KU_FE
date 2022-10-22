@@ -5,8 +5,10 @@ import Num4 from '../../assets/num4.png';
 import Num5 from '../../assets/num5.png';
 import styled from 'styled-components';
 import 'react-alice-carousel/lib/alice-carousel.css';
+
 import AliceCarousel from 'react-alice-carousel';
 import './carousel.css';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
 interface IInsideContent {
   width: number;
@@ -21,23 +23,25 @@ const Contain = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
-  width: 80vw;
+  max-width: 300px;
+  min-width: 300px;
+  overflow: hidden;
 `;
 
 const ItemsContain = styled.div`
-  width: 100%;
+  width: 300px;
   height: 100%;
-  padding: 0 10px;
+  overflow: hidden;
 `;
 
 const ItemsWrap = styled.div`
-  width: 100%;
+  /* width: 100%; */
   overflow: hidden;
-  margin-left: 10px;
 
   img {
-    width: 217px;
-    height: 226px;
+    overflow: hidden;
+    width: 200px;
+    height: 220px;
     /* object-fit: cover; */
   }
 `;
@@ -85,13 +89,13 @@ function Carousel() {
   return (
     <Contain>
       <AliceCarousel
-        mouseTracking
+        // mouseTracking
         infinite={true}
-        animationDuration={1500}
-        autoPlayInterval={1000}
+        animationDuration={2000}
+        autoPlayInterval={2500}
         disableDotsControls
         disableButtonsControls
-        autoPlay
+        autoPlay={true}
         items={items}
         responsive={responsive}
         touchTracking={true}

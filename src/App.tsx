@@ -32,9 +32,6 @@ footer, header, hgroup, main, menu, nav, section {
 *[hidden] {
     display: none;
 }
-body {
-  line-height: 1;
-}
 menu, ol, ul {
   list-style: none;
 }
@@ -59,8 +56,8 @@ body {
   font-family: 'Noto Sans Pro', sans-serif;
   margin: 0;
   padding: 0;
-  margin-top: -30px;
-
+  line-height: 1;
+  background-color: #0e0e0e;
 }
 a {
   text-decoration:none;

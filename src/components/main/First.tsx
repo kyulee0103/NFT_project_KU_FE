@@ -3,14 +3,15 @@ import Tiger from '../../assets/firstTiger.png';
 import Lottie from 'lottie-react';
 import '../../routes/main.css';
 import animationData from '../../animations/96084-arrow.json';
+import ScrollRevealSlideAnimation from './MyAnimation';
 
 const FirstBox = styled.div`
   font-size: 23px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 40px;
-  margin-top: 78px;
-  margin-left: 40px;
+  padding-top: 78px;
+  padding-left: 40px;
 `;
 
 const White = styled.span`
@@ -57,31 +58,33 @@ const Relative = styled.div`
 function First() {
   return (
     <Relative>
-      <FirstBox>
-        <Line>
-          <White>버미</White>
-          <Black>와 </Black>
-          <White>수리</White>
-          <Black>가 </Black>
-          <br />
-          <White>2022년 정기전</White>
-          <Black>에 찾아왔어요!</Black>
-          <br />
-        </Line>
-        <Line>
-          <White>우리의 축제</White>
-          <Black>에 </Black>
-          <White>활기</White>
-          <Black>를</Black>
-          <br />
-          <White>더해줄 친구</White>
-          <Black>들,</Black>
-          <br />
-        </Line>
-        <Line>
-          <White>지금부터 만나볼까요?</White>
-        </Line>
-      </FirstBox>
+      <ScrollRevealSlideAnimation reLoading={false} direction="right">
+        <FirstBox>
+          <Line>
+            <White>버미</White>
+            <Black>와 </Black>
+            <White>수리</White>
+            <Black>가 </Black>
+            <br />
+            <White>2022년 정기전</White>
+            <Black>에 찾아왔어요!</Black>
+            <br />
+          </Line>
+          <Line>
+            <White>우리의 축제</White>
+            <Black>에 </Black>
+            <White>활기</White>
+            <Black>를</Black>
+            <br />
+            <White>더해줄 친구</White>
+            <Black>들,</Black>
+            <br />
+          </Line>
+          <Line>
+            <White>지금부터 만나볼까요?</White>
+          </Line>
+        </FirstBox>
+      </ScrollRevealSlideAnimation>
       <Down>
         <img src={Tiger} className="fade-in-img" alt="원래는 호랭이에용..." />
       </Down>

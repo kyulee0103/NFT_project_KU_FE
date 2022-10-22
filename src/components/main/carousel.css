@@ -3,22 +3,15 @@
   animation-fill-mode: both;
 }
 
+.alice-carousel {
+  overflow: hidden;
+  max-width: 300px;
+  min-width: 300px;
+}
+
 .alice-carousel .animated-out {
   z-index: 1;
 }
 
-.alice-carousel__stage-item .alice-carousel .fadeOut {
-  -webkit-animation-name: fadeOut;
-  animation-name: fadeOut;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
+.alice-carousel__stage-item {
 }

@@ -1,18 +1,18 @@
-body {
+/* body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-image: url('../assets/backGroundImg.svg');
   background-size: cover;
   background-color: #0e0e0e;
-}
+} */
 
 .fade-in-img {
   display: inline-block;
   padding: 10px;
-  animation: fadein 2s;
-  -moz-animation: fadein 2s; /* Firefox */
-  -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -o-animation: fadein 2s; /* Opera */
+  /* animation: fadein 2s;
+  -moz-animation: fadein 2s; 
+  -webkit-animation: fadein 2s; 
+  -o-animation: fadein 2s;  */
 }
 @keyframes fadein {
   from {
@@ -47,5 +47,28 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+.blink {
+  -webkit-animation: blink 2s ease infinite;
+  transition: all 1s ease-in;
+}
+@keyframes blink {
+  /*0% 부터 100% 까지*/
+  0% {
+    box-shadow: 0px 0px 20px 10px rgba(145, 145, 145, 0.39);
+    background-color: #fafafa;
+    color: black;
+  }
+  50% {
+    box-shadow: 0px 0px 20px 10px rgba(14, 14, 14, 0.39);
+    background-color: #d2d2d2;
+    color: rgb(62, 62, 62);
+  }
+  100% {
+    box-shadow: 0px 0px 20px 10px rgba (145, 145, 145, 0.39);
+    background-color: #fafafa;
+    color: black;
   }
 }
