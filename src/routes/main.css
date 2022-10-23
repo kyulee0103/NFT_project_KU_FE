@@ -1,22 +1,10 @@
-/* body {
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-image: url('../assets/backGroundImg.svg');
-  background-size: cover;
-  background-color: #0e0e0e;
-} */
-
 .fade-in-img {
   display: inline-block;
   padding: 10px;
-  /* animation: fadein 2s;
-  -moz-animation: fadein 2s; 
-  -webkit-animation: fadein 2s; 
-  -o-animation: fadein 2s;  */
 }
 @keyframes fadein {
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
     opacity: 1;
@@ -25,7 +13,7 @@
 @-moz-keyframes fadein {
   /* Firefox */
   from {
-    opacity: 0;
+    opacity: 1;
   }
   to {
     opacity: 1;

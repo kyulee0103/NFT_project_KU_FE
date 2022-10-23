@@ -3,8 +3,10 @@ import ColoredTitle from '../../assets/nft_game/secondTitle.png';
 import UnderImg from '../../assets/nft_game/under.svg';
 import BlurImg from '../../assets/nft_game/blur.png';
 import Title from '../../assets/firstTitle.png';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, PropsWithChildren } from 'react';
+import axios from 'axios';
+import { getResult } from 'klip-sdk';
+import { Link } from 'react-router-dom';
 
 interface ITotal {
   height?: number;
@@ -168,16 +170,28 @@ const BlurBox = styled.div`
 `;
 
 function NFT_First() {
+  const requestKey = localStorage.getItem('BUMISURI_NFT');
+  const [address, setAddress] = useState('');
+  console.log(requestKey);
   const [after, setAfter] = useState<boolean>(false);
+
   useEffect(() => {
     setTimeout(() => {
       setAfter(prev => !prev);
     }, 200);
+    const timerId = setInterval(() => {
+      axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
+        if (res.data.result) {
+          console.log(`[Result] ${JSON.stringify(res.data.result)}`);
+          console.log(res.data.result.klaytn_address);
+          const myAddress = res.data.result.klaytn_address;
+          setAddress(myAddress);
+          clearInterval(timerId);
+        }
+      });
+    }, 1000);
   }, []);
-  const navigate = useNavigate();
-  const onClick = () => {
-    navigate('/whoyou');
-  };
+  console.log('this is my address', address);
 
   return (
     <Total height={window.innerHeight}>
@@ -206,7 +220,11 @@ function NFT_First() {
           </Line2>
         </Box>
         <BtnBox>
-          <button onClick={onClick}>참여하기</button>
+          <button>
+            <Link to={'/whoyou'} state={{ myAddress: address }}>
+              참여하기
+            </Link>
+          </button>
         </BtnBox>
       </Middle>
       <div>

@@ -1,8 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import TextField from '@mui/material/TextField';
 import useInput from '../../hooks/useInput';
-import SwitchSelector from 'react-switch-selector';
+import './form.scss';
+import React, { useState, useCallback, useRef } from 'react';
+import axios from 'axios';
+
+interface FormValue {
+  name: string;
+  studentNum: string;
+  phone: string;
+}
 
 const Total = styled.div`
   margin-top: 102px;
@@ -16,91 +23,167 @@ const Total = styled.div`
     color: #fafafa;
   }
 `;
+
 const Title = styled.div``;
 const FormBox = styled.div`
-  background-color: #c3c3fb;
+  /* background-color: #c3c3fb; */
   width: 100%;
   height: 50vh;
 `;
-const TextFieldBox = styled.div``;
-const Top = styled.div``;
+
+const Top = styled.div`
+  margin: 60px auto 40px auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; */
+`;
+
+const Bottom = styled.div`
+  width: 100%;
+  margin-top: 15vh;
+  text-align: center;
+  p {
+    color: #575757;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+`;
+
+const Btn = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  button {
+    width: 270px;
+    height: 43px;
+    border-radius: 21.5px;
+    background-color: #7000ff;
+    border: 0px;
+    color: #fafafa;
+    font-size: 16px;
+    font-weight: 700;
+  }
+`;
+interface RouteState {
+  myAddress?: string;
+}
 
 function NFT_form() {
+  const form = useRef<HTMLFormElement>(null);
+  const [school, setSchool] = useState<boolean>(false);
   const [name, onChangeName] = useInput('');
   const [studentNum, onChangeStudentNum] = useInput('');
   const [phone, onChangePhone] = useInput('');
-  const options = [
-    {
-      label: '고려대학교',
-      value: '고려대학교',
-      selectedBackgroundColor: '#FFFFFF',
-      selectedFontColor: 'black',
-    },
-    {
-      label: '연세대학교',
-      value: '연세대학교',
-      selectedBackgroundColor: '#FFFFFF',
-      selectedFontColor: 'black',
-    },
-  ];
+  const location = useLocation();
+  const { myAddress } = location?.state as RouteState;
+  const navigate = useNavigate();
 
-  const initialSelectedIndex = options.findIndex(({ value }) => value === 'bar');
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSchool(e.target.checked);
+  };
+
+  const onSubmit = useCallback(
+    (e: React.SyntheticEvent) => {
+      e.preventDefault();
+      axios({
+        url: 'http://3.35.55.201:3000/mint',
+        method: 'post',
+        data: {
+          userAddr: myAddress,
+          name: name,
+          univ: school,
+          phoneNumber: phone,
+          studentNumber: studentNum,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          navigate('/loading', {
+            state: {
+              myNFTData: response.data,
+            },
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      console.log(school, name, studentNum, phone, myAddress);
+    },
+    [school, name, studentNum, phone, myAddress]
+  );
+  console.log(phone);
 
   return (
     <Total>
       <Title>
         <p>시작하기</p>
       </Title>
+      <Top>
+        <div className="can-toggle demo-rebrand-2">
+          <input id="e" type="checkbox" checked={school} onChange={onChange} />
+          <label htmlFor="e">
+            <div className="can-toggle__switch" data-checked="연세대학교" data-unchecked="고려대학교"></div>
+            <div className="can-toggle__label-text"></div>
+          </label>
+        </div>
+      </Top>
       <FormBox>
-        <form>
-          <Top>
-            <div className="your-required-wrapper" style={{ width: 100, height: 30 }}>
-              <SwitchSelector
-                onChange={value => {
-                  console.log(value);
-                }}
-                options={options}
-                initialSelectedIndex={initialSelectedIndex}
-                backgroundColor={'#535353'}
-                fontColor={'#FFFFFF'}
-              />
-            </div>
-          </Top>
-          <TextFieldBox>
-            <TextField
-              id="standard-basic"
-              label="이름"
-              variant="standard"
-              required
-              size="small"
-              margin="none"
+        <form ref={form} autoComplete="off" onSubmit={onSubmit}>
+          <div className="form__group field">
+            <input
               value={name}
               onChange={onChangeName}
-            />
-
-            <TextField
-              type="number"
-              id="standard-basic"
-              label="학번"
-              variant="standard"
+              type="input"
+              className="form__field"
+              placeholder="이름"
+              name="name"
+              id="name"
               required
-              size="small"
-              margin="none"
+            />
+            <label htmlFor="name" className="form__label">
+              이름
+            </label>
+          </div>
+          <div className="form__group field">
+            <input
               value={studentNum}
               onChange={onChangeStudentNum}
-            />
-            <TextField
-              type="number"
-              id="standard-basic"
-              label="연락처"
-              variant="standard"
+              type="input"
+              className="form__field"
+              placeholder="학번"
+              name="name"
+              id="studentId"
               required
-              size="small"
-              margin="none"
+            />
+            <label htmlFor="studentId" className="form__label">
+              학번
+            </label>
+          </div>
+          <div className="form__group field">
+            <input
               value={phone}
               onChange={onChangePhone}
+              type="input"
+              className="form__field"
+              placeholder="연락처"
+              name="name"
+              id="phone"
+              required
             />
-          </TextFieldBox>
+            <label htmlFor="phone" className="form__label">
+              연락처
+            </label>
+          </div>
+          <Bottom>
+            <p>개인 정보 수집의 목적은 경품 지급 및</p>
+            <p>추가적인 홀더들에게 혜택을 지급해드리기 위해 사용됩니다.</p>
+            <p>혜택 지급 이후 수집한 정보는 파기됩니다.</p>
+          </Bottom>
+          <Btn>
+            <button type="submit">등록하기</button>
+          </Btn>
         </form>
       </FormBox>
     </Total>

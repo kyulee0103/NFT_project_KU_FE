@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { DevTools } from './components/VConosle';
 import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
@@ -66,11 +67,14 @@ a {
 
 `;
 
+const isProd = process.env.NODE_ENV === 'production';
+
 function App() {
   return (
     <>
       <GlobalStyle />
       <Router />
+      {!isProd && <DevTools />}
     </>
   );
 }

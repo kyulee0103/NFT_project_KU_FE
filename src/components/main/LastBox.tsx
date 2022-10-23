@@ -95,18 +95,6 @@ const SponImg = styled.div`
 `;
 
 function LastBox() {
-  // const [move, setMove] = useState<boolean>(false);
-  // const handleScroll = () => {
-  //   const isMoved = window.scrollY >= window.innerHeight * 2.5;
-  //   setMove(isMoved);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
   return (
     <Wrapper>
       <LastPage>
@@ -114,7 +102,7 @@ function LastBox() {
       </LastPage>
       <InsideContent width={window.innerWidth}>
         <Text>
-          <ScrollRevealSlideAnimation reLoading={false} direction="top">
+          <ScrollRevealSlideAnimation reLoading={false} direction="right">
             <div>
               <Top>
                 <Title>버미와 수리의</Title>

@@ -8,7 +8,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 import AliceCarousel from 'react-alice-carousel';
 import './carousel.css';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 
 interface IInsideContent {
   width: number;
@@ -74,28 +74,46 @@ const items = [
   </ItemsContain>,
 ];
 
+const responsive = {
+  0: {
+    items: 1,
+  },
+  600: {
+    items: 2,
+  },
+  800: {
+    items: 3,
+  },
+};
+
 function Carousel() {
-  const responsive = {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 2,
-    },
-    800: {
-      items: 3,
-    },
-  };
+  const [move, setMove] = useState<boolean>(false);
+  const handleScroll = useCallback(() => {
+    const isMoved = window.scrollY >= window.innerHeight * 2.5;
+    setMove(isMoved);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  if (!move) {
+    return null;
+  }
+
   return (
     <Contain>
       <AliceCarousel
         // mouseTracking
         infinite={true}
-        animationDuration={2000}
+        animationDuration={1500}
         autoPlayInterval={2500}
         disableDotsControls
         disableButtonsControls
-        autoPlay={true}
+        autoPlay={move}
         items={items}
         responsive={responsive}
         touchTracking={true}
