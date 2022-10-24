@@ -8,8 +8,8 @@ import { useRef, useEffect, PropsWithChildren } from 'react';
 import { prepare, request } from 'klip-sdk';
 
 const APP_NAME = 'BUMISURI';
-const SUCCESSLINK = 'http://172.20.10.4:3000/start';
-const FAILLINK = 'http://172.20.10.4:3000';
+const SUCCESSLINK = 'https://www.bummy-suri.com/start';
+const FAILLINK = 'https://www.bummy-suri.com/';
 
 const DEFAULT_ADDRESS = '0x00000000000000000000000000000';
 
