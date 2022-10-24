@@ -42,7 +42,7 @@ const Wrapper = styled.div<{
   direction: DirectionType;
   reLoading: boolean;
 }>`
-  ${({ isInViewPort, direction }) => {
+  ${({ isInViewPort, direction }: any) => {
     const axis = direction === 'top' || direction === 'bottom' ? 'Y' : 'X';
     const dir = direction === 'bottom' || direction === 'right' ? -1 : 1;
 
