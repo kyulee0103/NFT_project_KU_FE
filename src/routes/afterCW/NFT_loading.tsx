@@ -1,8 +1,9 @@
-import Present from '../../assets/nft_game/present.gif';
 import styled from 'styled-components';
-import LinearColor from '../../components/Line';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import LinearColor from '../../components/Line';
+import Present from '../../assets/nft_game/present.gif';
 
 const ImgBox = styled.div`
   width: 100%;
@@ -40,30 +41,46 @@ const LineBox = styled.div`
 `;
 
 interface RouteState {
-  myNFTData: any;
+  myData: any;
 }
 
 function NFT_loading() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { myNFTData } = location?.state as RouteState;
-
-  const timeout = () => {
-    setTimeout(() => {
-      navigate('/myNFT', {
-        state: {
-          myNFTData: myNFTData,
-        },
-      });
-    }, 5500);
-  };
+  const { myData } = location?.state as RouteState;
 
   useEffect(() => {
-    timeout();
-    return () => {
-      timeout();
-    };
-  }, []);
+    function loadMyData() {
+      return new Promise(resolve => {
+        if (!myData) {
+          resolve(null);
+        }
+        axios({
+          url: 'http://3.35.55.201:3000/mint',
+          method: 'post',
+          data: myData,
+        }).then(({ data }) => {
+          setTimeout(() => {
+            resolve(data);
+          }, 5000);
+        });
+      });
+    }
+
+    async function movePageWhenPromiseResolved() {
+      const data = await loadMyData();
+      if (!data) {
+        return;
+      }
+      navigate('/myNFT', {
+        state: {
+          myNFTData: data,
+        },
+      });
+    }
+
+    movePageWhenPromiseResolved();
+  }, [myData, navigate]);
   return (
     <>
       <ImgBox>

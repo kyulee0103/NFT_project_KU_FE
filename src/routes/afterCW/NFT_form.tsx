@@ -87,28 +87,39 @@ function NFT_form() {
   const onSubmit = useCallback(
     (e: React.SyntheticEvent) => {
       e.preventDefault();
-      axios({
-        url: 'http://3.35.55.201:3000/mint',
-        method: 'post',
-        data: {
-          userAddr: myAddress,
-          name: name,
-          univ: school,
-          phoneNumber: phone,
-          studentNumber: studentNum,
+      navigate('/loading', {
+        state: {
+          myData: {
+            userAddr: myAddress,
+            name: name,
+            univ: school,
+            phoneNumber: phone,
+            studentNumber: studentNum,
+          },
         },
-      })
-        .then(response => {
-          console.log(response);
-          navigate('/loading', {
-            state: {
-              myNFTData: response.data,
-            },
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      });
+      // axios({
+      //   url: 'http://3.35.55.201:3000/mint',
+      //   method: 'post',
+      //   data: {
+      //     userAddr: myAddress,
+      //     name: name,
+      //     univ: school,
+      //     phoneNumber: phone,
+      //     studentNumber: studentNum,
+      //   },
+      // })
+      //   .then(response => {
+      //     console.log(response);
+      //     navigate('/loading', {
+      //       state: {
+      //         myNFTData: response.data,
+      //       },
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
       console.log(school, name, studentNum, phone, myAddress);
     },
     [school, name, studentNum, phone, myAddress]

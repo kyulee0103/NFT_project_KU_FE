@@ -3,7 +3,7 @@ import ColoredTitle from '../../assets/nft_game/secondTitle.png';
 import UnderImg from '../../assets/nft_game/under.svg';
 import BlurImg from '../../assets/nft_game/blur.png';
 import Title from '../../assets/firstTitle.png';
-import { useState, useEffect, PropsWithChildren } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getResult } from 'klip-sdk';
 import { Link } from 'react-router-dom';
@@ -142,13 +142,14 @@ const line2moving = keyframes`
 
     }
     100%{
-        padding-right: 0px;
+        padding-right: 5px;
     }
 `;
 
 const Span = styled.span`
   animation: ${line2moving} 0.4s;
   animation-timing-function: ease;
+  padding-right: 5px;
 `;
 const Line2 = styled.div`
   display: flex;
@@ -174,6 +175,7 @@ function NFT_First() {
   const [address, setAddress] = useState('');
   console.log(requestKey);
   const [after, setAfter] = useState<boolean>(false);
+  const [mintNum, setMintNum] = useState<number[]>([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -190,8 +192,16 @@ function NFT_First() {
         }
       });
     }, 1000);
+
+    axios.get('http://3.35.55.201:3000/counts').then(res => {
+      const koreaNum = Number(res.data.korea);
+      const yonseiNum = Number(res.data.yonsei);
+      setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
+      console.log('되니?');
+    });
   }, []);
   console.log('this is my address', address);
+  console.log('this is mintNum', mintNum);
 
   return (
     <Total height={window.innerHeight}>
@@ -200,12 +210,14 @@ function NFT_First() {
         <Box>
           <Line1>
             <p style={{ color: '#FAFAFA', opacity: 0.5 }}>현재 민팅 점수</p>
-            <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '36px' }}>1421점</p>
+            <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '36px' }}>
+              {mintNum[0] == undefined ? null : mintNum[0] + mintNum[1]} 점
+            </p>
           </Line1>
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>고려대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>357 </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum[0]} </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>
@@ -213,7 +225,7 @@ function NFT_First() {
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>연세대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>357 </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum[1]} </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>

@@ -25,15 +25,7 @@ const Graph = styled.div`
   width: 100%;
   height: 50vh;
 `;
-const White = styled.span`
-  color: #ffffff;
-`;
-const Black = styled.span`
-  color: #676767;
-`;
-const Line = styled.div`
-  margin-bottom: 30px;
-`;
+
 const ChartSize = styled.div`
   width: 90%;
   margin: 5px auto;
@@ -45,18 +37,6 @@ const Pop = styled.div`
     color: #949494;
     text-decoration: underline;
   }
-`;
-
-const Top = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 10px;
-  margin-left: 28px;
-  margin-top: 20px;
-`;
-
-const UnderL = styled.span`
-  text-decoration: underline;
 `;
 
 function Second() {
@@ -101,22 +81,6 @@ function Second() {
       </Versus>
       <ScrollRevealSlideAnimation reLoading={true} direction="top">
         <Graph>
-          <Top>
-            <Line>
-              <White>지금</White>
-              <Black>은 </Black>
-              <White>고려대</White>
-              <Black>가 </Black>
-            </Line>
-            <Line>
-              <White>
-                <UnderL>12점 차이</UnderL>
-              </White>
-              <Black>로 </Black>
-              <White>민팅 필승! 전승! 압승!</White>
-            </Line>
-          </Top>
-
           <ChartSize>
             <Chart />
           </ChartSize>

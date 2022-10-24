@@ -3,6 +3,8 @@ import Score from '../../assets/nft_game/score.png';
 import PurpleDot from '../../assets/nft_game/purpledot.png';
 import Shadow from '../../assets/nft_game/bottom.png';
 import { Link, useLocation } from 'react-router-dom';
+import NoOpenModal from '../../components/main/NoModal';
+import { useState } from 'react';
 
 const Top = styled.div`
   color: white;
@@ -10,24 +12,27 @@ const Top = styled.div`
   position: relative;
   text-align: center;
 `;
+
 const Title = styled.p`
   font-size: 20px;
   font-weight: 600;
 `;
+
 const Left = styled.div`
   position: absolute;
   color: white;
   top: 4vh;
-  right: 10px;
+  right: 5vw;
   img {
     width: 97px;
   }
 `;
+
 const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  left: 45px;
+  left: 47px;
 `;
 const Middle = styled.div`
   display: flex;
@@ -144,6 +149,11 @@ function NFT_Main() {
       alert('공유하기가 지원되지 않는 환경입니다..');
     }
   };
+  const [noopenModal, setNoOpenModal] = useState(false);
+  const onClick = () => {
+    setNoOpenModal(prev => !prev);
+  };
+
   return (
     <>
       <Top>
@@ -151,7 +161,7 @@ function NFT_Main() {
       </Top>
       <Left>
         <img src={Score}></img>
-        <Point>1450</Point>
+        <Point>500</Point>
       </Left>
       <Middle>
         <img src={myNFTData.metadata.image} alt="이미지 안떠요"></img>
@@ -187,12 +197,17 @@ function NFT_Main() {
       <ShadowBox>
         <BtnBox>
           <Btn>
-            <Link to="/game">정기전 예측하기</Link>
+            <Link
+              to="/game"
+              state={{
+                myNFTData: myNFTData,
+              }}>
+              정기전 예측하기
+            </Link>
           </Btn>
-          <Btn>
-            <Link to="/bet">경품 응모하기</Link>
-          </Btn>
+          <Btn onClick={onClick}>경품 응모하기</Btn>
         </BtnBox>
+        {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null}
         <img src={Shadow} />
       </ShadowBox>
     </>

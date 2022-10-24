@@ -110,7 +110,7 @@ function Carousel() {
         // mouseTracking
         infinite={true}
         animationDuration={1500}
-        autoPlayInterval={2500}
+        autoPlayInterval={2000}
         disableDotsControls
         disableButtonsControls
         autoPlay={move}
