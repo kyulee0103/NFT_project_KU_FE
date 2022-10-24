@@ -130,10 +130,10 @@ function OpenModal({ setOpenModal, openModal }: IOpenModal) {
             </Middle>
             <ImgBox>
               <EachBox>
-                <img src={left} style={{ width: '131px' }} />
+                <img src={left} style={{ width: '131px' }} alt="img" />
               </EachBox>
               <EachBox>
-                <img src={right} style={{ width: '120px' }} />
+                <img src={right} style={{ width: '120px' }} alt="img" />
               </EachBox>
             </ImgBox>
           </Contents>

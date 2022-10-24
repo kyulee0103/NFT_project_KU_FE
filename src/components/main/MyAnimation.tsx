@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { useWindowScrollEvent } from '../../hooks/useScrollEvent';
 import { checkIsInViewport } from '../CheckViewPort';
@@ -14,18 +14,17 @@ export type ScrollRevealSlideAnimationProps = {
 function ScrollRevealSlideAnimation({ children, reLoading, direction = 'top' }: ScrollRevealSlideAnimationProps) {
   const elemRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
   const [isInViewPort, setIsInViewPort] = useState(checkIsInViewport(elemRef?.current));
-  console.log(elemRef?.current);
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setIsInViewPort(checkIsInViewport(elemRef.current));
-    if (reLoading != false) {
-      console.log('reloading sector');
+    if (reLoading !== false) {
+      setLoading(false);
     }
-  }, [elemRef?.current === undefined]);
+  }, [elemRef?.current === undefined, reLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useWindowScrollEvent(() => {
-    // console.log('hey');
     setIsInViewPort(checkIsInViewport(elemRef.current));
   });
 

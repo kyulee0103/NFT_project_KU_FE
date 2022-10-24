@@ -6,7 +6,6 @@ import Spon2 from '../../assets/next.png';
 import Spon3 from '../../assets/yon.png';
 import Spon4 from '../../assets/klaytn.png';
 import ScrollRevealSlideAnimation from './MyAnimation';
-import { useState, useEffect } from 'react';
 
 const LastPage = styled.div`
   height: 100vh;
@@ -98,7 +97,7 @@ function LastBox() {
   return (
     <Wrapper>
       <LastPage>
-        <img src={Last} />
+        <img src={Last} alt="img" />
       </LastPage>
       <InsideContent width={window.innerWidth}>
         <Text>
@@ -126,13 +125,13 @@ function LastBox() {
             </SponTitle>
             <SponImgBox>
               <SponImg>
-                <img src={Spon1} style={{ width: '97px', height: '26px' }} />
+                <img src={Spon1} style={{ width: '97px', height: '26px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon2} style={{ width: '52px', height: '23px' }} />
+                <img src={Spon2} style={{ width: '52px', height: '23px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon3} style={{ width: '84px', height: '26px' }} />
+                <img src={Spon3} style={{ width: '84px', height: '26px' }} alt="img" />
               </SponImg>
             </SponImgBox>
             <SponTitle>
@@ -140,13 +139,13 @@ function LastBox() {
             </SponTitle>
             <SponImgBox>
               <SponImg>
-                <img src={Spon4} style={{ width: '59px', height: '13px' }} />
+                <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon4} style={{ width: '59px', height: '13px' }} />
+                <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon4} style={{ width: '59px', height: '13px' }} />
+                <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
             </SponImgBox>
           </Sponsor>

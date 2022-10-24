@@ -8,16 +8,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 import AliceCarousel from 'react-alice-carousel';
 import './carousel.css';
-import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
-
-interface IInsideContent {
-  width: number;
-}
-
-enum AnimationType {
-  FADEOUT = 'fadeout',
-  SLIDE = 'slide',
-}
+import { useCallback, useEffect, useState } from 'react';
 
 const Contain = styled.div`
   display: flex;
@@ -49,27 +40,27 @@ const ItemsWrap = styled.div`
 const items = [
   <ItemsContain>
     <ItemsWrap>
-      <img src={Num1} />
+      <img src={Num1} alt="이미지" />
     </ItemsWrap>
   </ItemsContain>,
   <ItemsContain>
     <ItemsWrap>
-      <img src={Num2} />
+      <img src={Num2} alt="이미지" />
     </ItemsWrap>
   </ItemsContain>,
   <ItemsContain>
     <ItemsWrap>
-      <img src={Num3} />
+      <img src={Num3} alt="이미지" />
     </ItemsWrap>
   </ItemsContain>,
   <ItemsContain>
     <ItemsWrap>
-      <img src={Num4} />
+      <img src={Num4} alt="이미지" />
     </ItemsWrap>
   </ItemsContain>,
   <ItemsContain>
     <ItemsWrap>
-      <img src={Num5} />
+      <img src={Num5} alt="이미지" />
     </ItemsWrap>
   </ItemsContain>,
 ];
@@ -98,7 +89,7 @@ function Carousel() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   if (!move) {
     return null;
@@ -107,7 +98,6 @@ function Carousel() {
   return (
     <Contain>
       <AliceCarousel
-        // mouseTracking
         infinite={true}
         animationDuration={1500}
         autoPlayInterval={2000}
