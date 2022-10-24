@@ -28,7 +28,7 @@ const UnderL = styled.span`
 function Chart() {
   const [mintNum, setMintNum] = useState<number[]>([]);
   useEffect(() => {
-    axios.get('http://3.35.55.201:3000/counts').then(res => {
+    axios.get('https://3.35.55.201:3000/counts').then(res => {
       const koreaNum = Number(res.data.korea);
       const yonseiNum = Number(res.data.yonsei);
       setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
