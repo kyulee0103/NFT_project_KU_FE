@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Cross from '../../assets/crossline.png';
+import Cross from '../../assets/crossLine.png';
 import ScrollRevealSlideAnimation from './MyAnimation';
 
 const Text = styled.div`
