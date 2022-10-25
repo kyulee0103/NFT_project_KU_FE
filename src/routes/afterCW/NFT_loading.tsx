@@ -74,6 +74,8 @@ function NFT_loading() {
       if (!data) {
         return;
       }
+      alert(`${JSON.stringify(data)} my address : ${data}`);
+
       navigate('/myNFT', {
         state: {
           myNFTData: data,

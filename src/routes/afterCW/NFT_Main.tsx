@@ -154,6 +154,9 @@ function NFT_Main() {
   const onClick = () => {
     setNoOpenModal(prev => !prev);
   };
+  function showme() {
+    alert(`${JSON.stringify(myNFTData)} my address : ${myNFTData.userAddr}`);
+  }
 
   return (
     <>
@@ -203,6 +206,7 @@ function NFT_Main() {
       <ShadowBox>
         <BtnBox>
           <Btn>
+            {/* <button onClick={showme}>여기가 알러트 버튼 이에요</button> */}
             <Link
               to="/game"
               state={{
