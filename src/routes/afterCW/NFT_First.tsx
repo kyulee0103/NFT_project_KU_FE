@@ -223,7 +223,7 @@ function NFT_First() {
       data: address,
     }).then(({ data }) => {
       data.isMinted
-        ? navigate('/loading', {
+        ? navigate('/myNFT', {
             state: {
               myAddress: address,
               myNFTData: data,
