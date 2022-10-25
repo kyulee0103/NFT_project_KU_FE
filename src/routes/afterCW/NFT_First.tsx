@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getResult } from 'klip-sdk';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { resolve } from 'path';
+// import { resolve } from 'path';
 
 interface ITotal {
   height?: number;
@@ -183,22 +183,17 @@ function NFT_First() {
     setTimeout(() => {
       setAfter(prev => !prev);
     }, 200);
-    function loadData() {
-      return new Promise(resolve => {
-        const timerId = setInterval(() => {
-          axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
-            if (res.data.result) {
-              console.log(`[Result] ${JSON.stringify(res.data.result)}`);
-              console.log(res.data.result.klaytn_address);
-              const myAddress = res.data.result.klaytn_address;
-              setAddress(myAddress);
-              resolve(myAddress);
-              clearInterval(timerId);
-            }
-          });
-        }, 1000);
+    const timerId = setInterval(() => {
+      axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
+        if (res.data.result) {
+          console.log(`[Result] ${JSON.stringify(res.data.result)}`);
+          console.log(res.data.result.klaytn_address);
+          const myAddress = res.data.result.klaytn_address;
+          setAddress(myAddress);
+          clearInterval(timerId);
+        }
       });
-    }
+    }, 1000);
 
     axios.get('https://angry-dongmin.com/counts').then(res => {
       const koreaNum = Number(res.data.korea);
