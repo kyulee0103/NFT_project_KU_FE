@@ -210,7 +210,7 @@ function Game() {
       <Header>
         <p>정기전 경기 예측</p>
       </Header>
-      <button onClick={showme}></button>
+      <button onClick={showme}>여기가 알러트 버튼 이에요</button>
 
       <SportTitle>
         <p>야구 ⚾️</p>
