@@ -197,7 +197,6 @@ function NFT_First() {
       const koreaNum = Number(res.data.korea);
       const yonseiNum = Number(res.data.yonsei);
       setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
-      console.log('되니?');
     });
   }, []);
   console.log('this is my address', address);

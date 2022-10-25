@@ -80,7 +80,7 @@ function NFT_loading() {
     }
 
     movePageWhenPromiseResolved();
-  }, [myData, navigate]);
+  }, []);
   return (
     <>
       <ImgBox>
