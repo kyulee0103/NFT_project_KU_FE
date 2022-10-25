@@ -41,25 +41,25 @@ const LineBox = styled.div`
 `;
 
 interface RouteState {
-  myData: any;
+  myAddress: any;
 }
 
 function NFT_loading() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { myData } = location?.state as RouteState;
+  const { myAddress } = location?.state as RouteState;
   const axiosResponseRef = useRef<boolean>(false);
 
   useEffect(() => {
     function loadMyData() {
       return new Promise(resolve => {
-        if (!myData || axiosResponseRef.current) {
+        if (!myAddress || axiosResponseRef.current) {
           resolve(null);
         }
         axios({
           url: 'https://angry-dongmin.com/mint',
           method: 'post',
-          data: myData,
+          data: myAddress,
         }).then(({ data }) => {
           setTimeout(() => {
             axiosResponseRef.current = true;
