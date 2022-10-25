@@ -18,6 +18,7 @@ const SmallT = styled.p`
   font-size: 14px;
   margin-bottom: 5px;
   line-height: 13px;
+  font-weight: 300;
 `;
 
 const SmallBox = styled.div`
@@ -50,8 +51,8 @@ function Third() {
           <BigT>1500마리의 버미,</BigT>
           <BigT>1500마리의 수리!</BigT>
           <SmallBox>
-            <SmallT>블록체인 기술을 활용해 만들어진</SmallT>
-            <SmallT>대체 불가능 토큰 버미 & 수리 NFT</SmallT>
+            <SmallT>블록체인 기술을 활용해 만드는</SmallT>
+            <SmallT>나만의 버미와 수리 NFT</SmallT>
           </SmallBox>
         </Text>
       </ScrollRevealSlideAnimation>

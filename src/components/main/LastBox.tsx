@@ -37,12 +37,15 @@ const InsideContent = styled.div`
 const Text = styled.div``;
 const CarouselBox = styled.div`
   height: 230px;
+  width: 100vw;
 
   /* margin-top: 30px; */
 `;
 const Sponsor = styled.div`
   height: 200px;
   margin-top: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 const Top = styled.div`
   display: flex;
@@ -50,6 +53,7 @@ const Top = styled.div`
   justify-content: flex-start;
   width: 300px;
   margin-bottom: 20px;
+  margin-left: 30px;
 `;
 
 const Middle = styled.div`
@@ -57,13 +61,14 @@ const Middle = styled.div`
   text-align: left;
   color: white;
   letter-spacing: 1px;
+  margin-left: 30px;
   p {
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 10px;
   }
   span {
-    font-weight: 300;
+    font-weight: 200;
     font-size: 14px;
   }
 `;
@@ -109,8 +114,11 @@ function LastBox() {
                 <Title>가보자고 (۶•̀ᴗ•́)۶</Title>
               </Top>
               <Middle>
-                <p>정기전 결과 예측 게임에 참여해주세요!</p>
-                <span>경기 예측 결과를 통해 푸짐한 경품에 응모하실 수 있습니다!!</span>
+                <p>정기전 결과 예측 게임 이벤트!</p>
+                <span>
+                  경기 예측 결과를 통해
+                  <br /> 푸짐한 경품에 응모하세요!!
+                </span>
               </Middle>
             </div>
           </ScrollRevealSlideAnimation>

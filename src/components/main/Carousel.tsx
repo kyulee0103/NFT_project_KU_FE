@@ -14,13 +14,13 @@ const Contain = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
-  max-width: 300px;
+  max-width: 400px;
   min-width: 300px;
   overflow: hidden;
 `;
 
 const ItemsContain = styled.div`
-  width: 300px;
+  /* width: 300px; */
   height: 100%;
   overflow: hidden;
 `;
