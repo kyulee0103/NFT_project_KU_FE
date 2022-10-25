@@ -154,7 +154,7 @@ function Game() {
       alert('🐯 선택 안한 항목 있어요! 🦅');
     } else {
       axios({
-        url: 'https://3.35.55.201:3000/guess',
+        url: 'https://angry-dongmin.com/guess',
         method: 'post',
         data: {
           userAddr: myNFTData.userAddr,

@@ -56,7 +56,7 @@ function NFT_loading() {
           resolve(null);
         }
         axios({
-          url: 'https://3.35.55.201:3000/mint',
+          url: 'https://angry-dongmin.com/mint',
           method: 'post',
           data: myData,
         }).then(({ data }) => {
