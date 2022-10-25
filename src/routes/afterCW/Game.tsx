@@ -99,6 +99,10 @@ function Game() {
   const [sportuniv5, setsportuniv5] = useState('default');
   const [sportopt5, setsportopt5] = useState(-2);
 
+  function showme() {
+    alert(`${JSON.stringify(myNFTData)} my address : ${myNFTData.userAddr}`);
+  }
+
   const renderingButton = (sportuniv: string, setsportuniv: any, setsportopt: any) => {
     const result = [
       <button className={`btn ${sportuniv === 'KOREA' ? 'active' : ''}`} onClick={() => setsportuniv('KOREA')}>
@@ -206,6 +210,8 @@ function Game() {
       <Header>
         <p>정기전 경기 예측</p>
       </Header>
+      <button onClick={showme}></button>
+
       <SportTitle>
         <p>야구 ⚾️</p>
         <Buttondiv>{renderingButton(sportuniv1, setsportuniv1, setsportopt1)}</Buttondiv>
