@@ -5,9 +5,7 @@ import BlurImg from '../../assets/nft_game/blur.png';
 import Title from '../../assets/firstTitle.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { getResult } from 'klip-sdk';
 import { Link, Navigate, useLoaderData, useNavigate } from 'react-router-dom';
-import { resolve } from 'path';
 
 interface ITotal {
   height?: number;
@@ -226,7 +224,7 @@ function NFT_First() {
 
   const handleJoinClip = useCallback(async () => {
     if (!walletAdress.current) {
-      alert('지갑 주소를 가지고 오지 못했어요.');
+      alert('카카오 클립 지갑 주소를 가지고 오지 못했어요.');
       return;
     }
 
@@ -250,9 +248,9 @@ function NFT_First() {
     });
   }, []);
 
-  // if (!ready) {
-  //   return null;
-  // }
+  if (!ready) {
+    return null;
+  }
 
   return (
     <Total height={window.innerHeight}>
