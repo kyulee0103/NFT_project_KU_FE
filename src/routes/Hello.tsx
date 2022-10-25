@@ -43,7 +43,13 @@ function Hello() {
 
   const downloadNFT = () => {
     const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
-    fetch(url, { mode: 'cors', method: 'GET' })
+    fetch(url, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        Origin: 'https://bummy-suri.com',
+      },
+    })
       .then(res => {
         return res.blob();
       })

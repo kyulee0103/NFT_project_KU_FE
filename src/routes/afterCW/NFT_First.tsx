@@ -3,11 +3,11 @@ import ColoredTitle from '../../assets/nft_game/secondTitle.png';
 import UnderImg from '../../assets/nft_game/under.svg';
 import BlurImg from '../../assets/nft_game/blur.png';
 import Title from '../../assets/firstTitle.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import { getResult } from 'klip-sdk';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-// import { resolve } from 'path';
+import { Link, Navigate, useLoaderData, useNavigate } from 'react-router-dom';
+import { resolve } from 'path';
 
 interface ITotal {
   height?: number;
@@ -172,78 +172,87 @@ const BlurBox = styled.div`
 `;
 
 function NFT_First() {
-  const requestKey = localStorage.getItem('BUMISURI_NFT');
-  const [address, setAddress] = useState('');
-  console.log(requestKey);
+  // animation 용 state
   const [after, setAfter] = useState<boolean>(false);
-  const [mintNum, setMintNum] = useState<number[]>([]);
+
+  // 페이지 접근시 필요
+  const requestKey = localStorage.getItem('BUMISURI_NFT');
+  const [ready, setReady] = useState<boolean>(false);
+  const [mintNum, setMintNum] = useState<{ korea: number; yonsei: number }>({ korea: 0, yonsei: 0 });
+  const walletAdress = useRef<string>('');
+
   const navigate = useNavigate();
 
+  // animation 용 useEffect
   useEffect(() => {
     setTimeout(() => {
       setAfter(prev => !prev);
     }, 200);
-    const timerId = setInterval(() => {
-      axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
-        if (res.data.result) {
-          console.log(`[Result] ${JSON.stringify(res.data.result)}`);
-          console.log(res.data.result.klaytn_address);
-          const myAddress = res.data.result.klaytn_address;
-          setAddress(myAddress);
-          clearInterval(timerId);
-        }
-      });
-    }, 1000);
-
-    axios.get('https://angry-dongmin.com/counts').then(res => {
-      const koreaNum = Number(res.data.korea);
-      const yonseiNum = Number(res.data.yonsei);
-      setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
-    });
-
-    // async function checkIfAddressInDB() {
-    //   const waitingData = await loadData();
-    //   if (!waitingData) {
-    //     return;
-    //   }
-
-    // }
-    // checkIfAddressInDB();
   }, []);
 
-  function clicked() {
-    axios({
-      url: 'https://angry-dongmin.com/isMinted',
-      method: 'post',
-      data: address,
-    }).then(({ data }) => {
-      data.isMinted
-        ? navigate('/myNFT', {
-            state: {
-              myNFTData: data,
-            },
-          })
-        : navigate('/whoyou', {
-            state: {
-              myAddress: address,
-            },
-          });
-    });
-  }
+  useEffect(() => {
+    // 초기 셋팅
+    async function loadInitialMintNumber() {
+      if (ready) {
+        return;
+      }
 
-  // const onClick = () => {
-  //   address == ''
-  //     ? null
-  //     : useEffect(() => {
-  //         axios({
-  //           url: 'https://angry-dongmin.com/redirect',
-  //           method: 'post',
-  //           data: address,
-  //         }).then(({ data }) => {
-  //           console.log(data);
-  //         });
-  //       }, [address]);
-  // };
+      // 민팅 데이터 셋팅
+      const { data: mintNumberData } = await axios.get('https://angry-dongmin.com/counts');
+      const { korea, yonsei } = mintNumberData;
+      setMintNum({ korea, yonsei });
+
+      // 지갑 주소셋팅
+      try {
+        if (requestKey) {
+          const { data: kilpwalletData } = await axios.get(
+            `https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`
+          );
+
+          if (kilpwalletData?.result) {
+            const { klaytn_address: userWalletAddress } = kilpwalletData.result;
+            walletAdress.current = userWalletAddress;
+          }
+        }
+      } catch (error) {
+        // ignore get wallet addresss error
+        console.error(error);
+      }
+
+      setReady(true);
+    }
+    loadInitialMintNumber();
+  }, []);
+
+  const handleJoinClip = useCallback(async () => {
+    if (!walletAdress.current) {
+      alert('지갑 주소를 가지고 오지 못했어요.');
+      return;
+    }
+
+    const address = walletAdress.current;
+    const { data: checkMintResult } = await axios.post('https://angry-dongmin.com/isMinted', address);
+
+    const isMinted = checkMintResult?.isMinted || false;
+
+    if (!isMinted) {
+      navigate('/whoyou', {
+        state: {
+          myAddress: address,
+        },
+      });
+      return;
+    }
+    navigate('/myNFT', {
+      state: {
+        myNFTData: checkMintResult,
+      },
+    });
+  }, []);
+
+  if (!ready) {
+    return null;
+  }
 
   return (
     <Total height={window.innerHeight}>
@@ -252,14 +261,12 @@ function NFT_First() {
         <Box>
           <Line1>
             <p style={{ color: '#FAFAFA', opacity: 0.5 }}>현재 민팅 점수</p>
-            <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '36px' }}>
-              {mintNum[0] == undefined ? null : mintNum[0] + mintNum[1]} 점
-            </p>
+            <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '36px' }}>{mintNum.korea + mintNum.yonsei} 점</p>
           </Line1>
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>고려대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum[0]} </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum.korea} </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>
@@ -267,7 +274,7 @@ function NFT_First() {
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>연세대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum[1]} </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum.yonsei} </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>
@@ -275,7 +282,7 @@ function NFT_First() {
         </Box>
         <BtnBox>
           {/* <Link to={'/whoyou'} state={{ myAddress: address }}> */}
-          <button onClick={clicked}>참여하기</button>
+          <button onClick={handleJoinClip}>참여하기</button>
           {/* </Link> */}
         </BtnBox>
       </Middle>
