@@ -197,8 +197,8 @@ function NFT_First() {
 
       // 민팅 데이터 셋팅
       const { data: mintNumberData } = await axios.get('https://angry-dongmin.com/counts');
-      const { korea, yonsei } = mintNumberData;
-      setMintNum({ korea, yonsei });
+      const { korea: koreaMintNumber, yonsei: yonseiMintNumber } = mintNumberData;
+      setMintNum({ korea: Number(koreaMintNumber), yonsei: Number(yonseiMintNumber) });
 
       // 지갑 주소셋팅
       try {
@@ -248,10 +248,6 @@ function NFT_First() {
     });
   }, []);
 
-  // if (!ready) {
-  //   return null;
-  // }
-
   return (
     <Total height={window.innerHeight}>
       <Top>{after ? <img src={ColoredTitle}></img> : <img src={Title}></img>}</Top>
@@ -264,7 +260,9 @@ function NFT_First() {
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>고려대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum.korea} </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>
+                {ready ? mintNum.korea : '??'}
+              </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>
@@ -272,15 +270,18 @@ function NFT_First() {
           <Line2>
             <p style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '16px' }}>연세대</p>
             <Right>
-              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>{mintNum.yonsei} </Span>
+              <Span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}>
+                {ready ? mintNum.yonsei : '??'}
+              </Span>
               <span style={{ color: '#FAFAFA', fontWeight: 600, fontSize: '24px' }}> / </span>
               <span style={{ color: '#FAFAFA', fontWeight: 500, fontSize: '24px', opacity: 0.56 }}>1500</span>
             </Right>
           </Line2>
         </Box>
         <BtnBox>
+          {ready && <button onClick={handleJoinClip}>참여하기</button>}
           {/* <Link to={'/whoyou'} state={{ myAddress: address }}> */}
-          <button onClick={handleJoinClip}>참여하기</button>
+
           {/* </Link> */}
         </BtnBox>
       </Middle>
