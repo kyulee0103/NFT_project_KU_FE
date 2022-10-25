@@ -203,7 +203,7 @@ function NFT_First() {
   console.log('this is mintNum', mintNum);
 
   const onClick = () => {
-    address !== ''
+    address == ''
       ? null
       : useEffect(() => {
           axios({
