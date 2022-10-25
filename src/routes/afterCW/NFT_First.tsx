@@ -189,6 +189,13 @@ function NFT_First() {
           const myAddress = res.data.result.klaytn_address;
           setAddress(myAddress);
           clearInterval(timerId);
+          axios({
+            url: 'https://angry-dongmin.com/redirect',
+            method: 'post',
+            data: myAddress,
+          }).then(({ data }) => {
+            console.log(data);
+          });
         }
       });
     }, 1000);
