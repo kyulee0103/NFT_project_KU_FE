@@ -6,7 +6,8 @@ import Title from '../../assets/firstTitle.png';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getResult } from 'klip-sdk';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { resolve } from 'path';
 
 interface ITotal {
   height?: number;
@@ -176,45 +177,78 @@ function NFT_First() {
   console.log(requestKey);
   const [after, setAfter] = useState<boolean>(false);
   const [mintNum, setMintNum] = useState<number[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
       setAfter(prev => !prev);
     }, 200);
-    const timerId = setInterval(() => {
-      axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
-        if (res.data.result) {
-          console.log(`[Result] ${JSON.stringify(res.data.result)}`);
-          console.log(res.data.result.klaytn_address);
-          const myAddress = res.data.result.klaytn_address;
-          setAddress(myAddress);
-          clearInterval(timerId);
-        }
+    function loadData() {
+      return new Promise(resolve => {
+        const timerId = setInterval(() => {
+          axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`).then(res => {
+            if (res.data.result) {
+              console.log(`[Result] ${JSON.stringify(res.data.result)}`);
+              console.log(res.data.result.klaytn_address);
+              const myAddress = res.data.result.klaytn_address;
+              setAddress(myAddress);
+              resolve(myAddress);
+              clearInterval(timerId);
+            }
+          });
+        }, 1000);
       });
-    }, 1000);
+    }
 
     axios.get('https://angry-dongmin.com/counts').then(res => {
       const koreaNum = Number(res.data.korea);
       const yonseiNum = Number(res.data.yonsei);
       setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
     });
-  }, []);
-  console.log('this is my address', address);
-  console.log('this is mintNum', mintNum);
 
-  const onClick = () => {
-    address == ''
-      ? null
-      : useEffect(() => {
-          axios({
-            url: 'https://angry-dongmin.com/redirect',
-            method: 'post',
-            data: address,
-          }).then(({ data }) => {
-            console.log(data);
+    // async function checkIfAddressInDB() {
+    //   const waitingData = await loadData();
+    //   if (!waitingData) {
+    //     return;
+    //   }
+
+    // }
+    // checkIfAddressInDB();
+  }, []);
+
+  function clicked() {
+    axios({
+      url: 'https://angry-dongmin.com/redirect',
+      method: 'post',
+      data: address,
+    }).then(({ data }) => {
+      data
+        ? navigate('/loading', {
+            state: {
+              myAddress: address,
+            },
+          })
+        : navigate('/whoyou', {
+            state: {
+              myAddress: address,
+            },
           });
-        }, [address]);
-  };
+    });
+  }
+
+  // const onClick = () => {
+  //   address == ''
+  //     ? null
+  //     : useEffect(() => {
+  //         axios({
+  //           url: 'https://angry-dongmin.com/redirect',
+  //           method: 'post',
+  //           data: address,
+  //         }).then(({ data }) => {
+  //           console.log(data);
+  //         });
+  //       }, [address]);
+  // };
 
   return (
     <Total height={window.innerHeight}>
@@ -246,7 +280,7 @@ function NFT_First() {
         </Box>
         <BtnBox>
           {/* <Link to={'/whoyou'} state={{ myAddress: address }}> */}
-          <button onClick={onClick}>참여하기</button>
+          <button onClick={clicked}>참여하기</button>
           {/* </Link> */}
         </BtnBox>
       </Middle>
