@@ -229,7 +229,7 @@ function NFT_First() {
     }
 
     const address = walletAdress.current;
-    const { data: checkMintResult } = await axios.post('https://angry-dongmin.com/isMinted', address);
+    const { data: checkMintResult } = await axios.post('https://angry-dongmin.com/isMinted', { userAddr: address });
 
     const isMinted = checkMintResult?.isMinted || false;
 
