@@ -218,7 +218,7 @@ function NFT_First() {
 
   function clicked() {
     axios({
-      url: 'https://angry-dongmin.com/redirect',
+      url: 'https://angry-dongmin.com/isMinted',
       method: 'post',
       data: address,
     }).then(({ data }) => {
