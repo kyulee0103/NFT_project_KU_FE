@@ -27,7 +27,7 @@ const Modal = muiStyled(ModalUnstyled)`
 const ModalBox = styled.div`
   position: relative;
   width: 80vw;
-  height: 55vh;
+  height: 60vh;
   border-radius: 8px;
   border: none;
   backdrop-filter: blur(10px);

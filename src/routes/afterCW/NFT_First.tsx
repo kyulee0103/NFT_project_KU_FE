@@ -30,7 +30,7 @@ const Top = styled.div`
   text-align: center;
   z-index: 200;
   img {
-    width: 190px;
+    width: 75%;
     z-index: 200;
   }
 `;

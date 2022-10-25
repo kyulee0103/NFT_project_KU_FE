@@ -91,6 +91,7 @@ const Little = styled.span`
 `;
 const DetailLine = styled.div`
   display: flex;
+  font-family: 'Noto Sans PRO', sans-serif;
 `;
 const DetailLeft = styled.p`
   color: white;
@@ -141,14 +142,13 @@ function NFT_Main() {
   const { myNFTData } = location?.state as RouteState;
   console.log('this is my data', myNFTData);
   const sharing = () => {
-    if (navigator.share) {
-      alert('공유하기 가능한 환경입니다!');
-      navigator.share({
-        files: [myNFTData.metadata.image],
-      });
-    } else {
-      alert('공유하기가 지원되지 않는 환경입니다..');
-    }
+    // if (navigator.share) {
+    //   navigator.share({
+    //     files: [myNFTData.metadata.image],
+    //   });
+    // } else {
+    //   alert('공유하기가 지원되지 않는 환경입니다..');
+    // }
   };
   const [noopenModal, setNoOpenModal] = useState(false);
   const onClick = () => {
