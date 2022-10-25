@@ -43,7 +43,7 @@ function Hello() {
 
   const downloadNFT = () => {
     const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
-    fetch(url, { method: 'GET' })
+    fetch(url, { mode: 'cors', method: 'GET' })
       .then(res => {
         return res.blob();
       })

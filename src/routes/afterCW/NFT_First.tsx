@@ -189,13 +189,6 @@ function NFT_First() {
           const myAddress = res.data.result.klaytn_address;
           setAddress(myAddress);
           clearInterval(timerId);
-          axios({
-            url: 'https://angry-dongmin.com/redirect',
-            method: 'post',
-            data: myAddress,
-          }).then(({ data }) => {
-            console.log(data);
-          });
         }
       });
     }, 1000);
@@ -208,6 +201,20 @@ function NFT_First() {
   }, []);
   console.log('this is my address', address);
   console.log('this is mintNum', mintNum);
+
+  const onClick = () => {
+    address !== ''
+      ? null
+      : useEffect(() => {
+          axios({
+            url: 'https://angry-dongmin.com/redirect',
+            method: 'post',
+            data: address,
+          }).then(({ data }) => {
+            console.log(data);
+          });
+        }, []);
+  };
 
   return (
     <Total height={window.innerHeight}>
@@ -238,9 +245,9 @@ function NFT_First() {
           </Line2>
         </Box>
         <BtnBox>
-          <Link to={'/whoyou'} state={{ myAddress: address }}>
-            <button>참여하기</button>
-          </Link>
+          {/* <Link to={'/whoyou'} state={{ myAddress: address }}> */}
+          <button onClick={onClick}>참여하기</button>
+          {/* </Link> */}
         </BtnBox>
       </Middle>
       <div>
