@@ -242,9 +242,10 @@ function NFT_First() {
       });
       return;
     }
+    alert(`checkMintResult ${JSON.stringify(checkMintResult)} address ${address}`);
     navigate('/myNFT', {
       state: {
-        myNFTData: checkMintResult,
+        myNFTData: checkMintResult, // {isMited : boolean}
       },
     });
   }, []);
