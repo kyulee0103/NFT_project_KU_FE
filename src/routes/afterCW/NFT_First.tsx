@@ -222,10 +222,11 @@ function NFT_First() {
       method: 'post',
       data: address,
     }).then(({ data }) => {
-      data
+      data.isMinted
         ? navigate('/loading', {
             state: {
               myAddress: address,
+              myNFTData: data,
             },
           })
         : navigate('/whoyou', {
