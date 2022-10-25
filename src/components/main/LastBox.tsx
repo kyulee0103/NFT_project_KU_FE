@@ -5,6 +5,9 @@ import Spon1 from '../../assets/bv.png';
 import Spon2 from '../../assets/next.png';
 import Spon3 from '../../assets/yon.png';
 import Spon4 from '../../assets/klaytn.png';
+import Spon5 from '../../assets/spon1.png';
+import Spon6 from '../../assets/spon3.png';
+import Spon7 from '../../assets/spon4.png';
 import ScrollRevealSlideAnimation from './MyAnimation';
 
 const LastPage = styled.div`
@@ -43,9 +46,9 @@ const CarouselBox = styled.div`
 `;
 const Sponsor = styled.div`
   height: 200px;
-  margin-top: 40px;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin: 40px auto;
+  /* margin-right: 30px; */
+  width: 300px;
 `;
 const Top = styled.div`
   display: flex;
@@ -93,6 +96,7 @@ const SponImgBox = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  align-items: center;
 `;
 const SponImg = styled.div`
   width: 100px;
@@ -147,13 +151,16 @@ function LastBox() {
             </SponTitle>
             <SponImgBox>
               <SponImg>
-                <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
+                <img src={Spon5} style={{ width: '59px' }} alt="img" />
               </SponImg>
               <SponImg>
                 <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
+                <img src={Spon6} style={{ width: '59px' }} alt="img" />
+              </SponImg>
+              <SponImg>
+                <img src={Spon7} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
             </SponImgBox>
           </Sponsor>

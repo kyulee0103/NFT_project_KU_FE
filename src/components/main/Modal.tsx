@@ -26,8 +26,8 @@ const Modal = muiStyled(ModalUnstyled)`
 
 const ModalBox = styled.div`
   position: relative;
-  width: 80vw;
-  height: 60vh;
+  width: 297px;
+  height: 420px;
   border-radius: 8px;
   border: none;
   backdrop-filter: blur(10px);
@@ -86,10 +86,11 @@ const Success = styled.p`
 const Contents = styled.div`
   text-align: center;
   z-index: 800;
+  width: 246px;
 `;
 
 const Middle = styled.span`
-  font-size: 16px;
+  font-size: 12px;
   line-height: 25px;
   font-weight: 300;
   z-index: 800;
@@ -124,9 +125,9 @@ function OpenModal({ setOpenModal, openModal }: IOpenModal) {
           <Contents>
             <Success>민팅 점수란?</Success>
             <Middle>
-              민팅(minting)은 화폐 주조를 의미하는 단어이지만, 블록체인 기술을 활용해 디지털 콘텐츠를
-              대체불가능토큰(NFT)으로 만드는 작업을 의미하기도 합니다. 여기서 민팅 점수란 버미와 수리가 각각 민팅을 통해
-              태어난 수를 의미합니다.
+              민팅(minting)은 화폐 주조를 의미하는 단어이지만, 블록체인 기술을 활용해 디지털 콘텐츠를 대체불가능
+              토큰으로 만드는 작업을 의미하기도 합니다. <br />
+              여기서 민팅 점수란 버미와 수리가 각각 민팅을 통해 태어난 수를 의미합니다.
             </Middle>
             <ImgBox>
               <EachBox>
