@@ -234,6 +234,7 @@ function NFT_First() {
     const isMinted = checkMintResult?.isMinted || false;
 
     if (!isMinted) {
+      alert(`checkMintResult ${checkMintResult} address ${address}`);
       navigate('/whoyou', {
         state: {
           myAddress: address,
