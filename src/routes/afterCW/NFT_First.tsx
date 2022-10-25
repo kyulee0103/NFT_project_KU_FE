@@ -213,7 +213,7 @@ function NFT_First() {
           }).then(({ data }) => {
             console.log(data);
           });
-        }, []);
+        }, [address]);
   };
 
   return (
