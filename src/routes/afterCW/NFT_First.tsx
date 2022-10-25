@@ -234,7 +234,7 @@ function NFT_First() {
     const isMinted = checkMintResult?.isMinted || false;
 
     if (!isMinted) {
-      alert(`checkMintResult ${JSON.stringify(checkMintResult)} address ${address}`);
+      // alert(`checkMintResult ${JSON.stringify(checkMintResult)} address ${address}`);
       navigate('/whoyou', {
         state: {
           myAddress: address,
@@ -242,7 +242,7 @@ function NFT_First() {
       });
       return;
     }
-    alert(`checkMintResult ${JSON.stringify(checkMintResult)} address ${address}`);
+    // alert(`checkMintResult ${JSON.stringify(checkMintResult)} address ${address}`);
     navigate('/myNFT', {
       state: {
         myNFTData: checkMintResult, // {isMited : boolean}

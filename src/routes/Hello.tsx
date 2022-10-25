@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import FileSaver from 'file-saver';
 import { blob } from 'stream/consumers';
 import { saveAs } from 'file-saver';
+import moving from '../assets/move.gif';
 
 interface IHeight {
   height: number;
@@ -23,23 +24,19 @@ const LogoDIv = styled.div`
 `;
 
 function Hello() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const timeout = () => {
-  //   setTimeout(() => {
-  //     navigate('/Main');
-  //   }, 6100);
-  // };
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      navigate('/Main');
+    }, 6000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   timeout();
-  //   return () => {
-  //     timeout();
-  //   };
-  // }, []);
-
-  // const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
-  // console.log(newUrl);
+  const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
+  console.log(newUrl);
 
   const downloadNFT = () => {
     const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
@@ -47,7 +44,7 @@ function Hello() {
       mode: 'cors',
       method: 'GET',
       headers: {
-        Origin: 'https://bummy-suri.com',
+        origin: '*',
       },
     })
       .then(res => {
@@ -64,13 +61,9 @@ function Hello() {
 
   return (
     <LogoDIv height={window.innerHeight}>
-      {/* <Lottie animationData={animationData}></Lottie> */}
+      <img src={moving} style={{ width: '300px', height: '300px' }} />
       <img style={{ width: '200px' }} src="https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png"></img>
-      <button onClick={() => downloadNFT()}>이미지 다운로드 받기</button>
-
-      {/* <button>
-        <Link to="/start">눌러봐</Link>
-      </button> */}
+      <button onClick={() => downloadNFT()}>이미지 다운로드 받기</button>/
     </LogoDIv>
   );
 }
