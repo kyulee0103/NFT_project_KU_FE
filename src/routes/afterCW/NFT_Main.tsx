@@ -170,7 +170,7 @@ function NFT_Main() {
           onClick={() => {
             sharing();
           }}>
-          {myNFTData.character} 자랑하러 가기
+          {myNFTData.username}님의 {myNFTData.character} NFT
         </button>
       </Middle>
       <Detail>
