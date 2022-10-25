@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import LinearColor from '../../components/Line';
 import Present from '../../assets/nft_game/present.gif';
@@ -48,11 +48,12 @@ function NFT_loading() {
   const navigate = useNavigate();
   const location = useLocation();
   const { myData } = location?.state as RouteState;
+  const axiosResponseRef = useRef<boolean>(false);
 
   useEffect(() => {
     function loadMyData() {
       return new Promise(resolve => {
-        if (!myData) {
+        if (!myData || axiosResponseRef.current) {
           resolve(null);
         }
         axios({
@@ -61,6 +62,7 @@ function NFT_loading() {
           data: myData,
         }).then(({ data }) => {
           setTimeout(() => {
+            axiosResponseRef.current = true;
             resolve(data);
           }, 5000);
         });

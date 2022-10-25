@@ -113,12 +113,12 @@ const Box = styled.div`
 
 const BtnBox = styled.div`
   text-align: center;
-  margin-top: 30px;
-  width: 100%;
+  margin: 30px auto;
+  width: 85%;
   button {
     color: black;
     border: 0px solid;
-    width: 85%;
+    width: 100%;
     height: 43px;
     font-size: 16px;
     font-weight: 700;
@@ -231,11 +231,9 @@ function NFT_First() {
           </Line2>
         </Box>
         <BtnBox>
-          <button>
-            <Link to={'/whoyou'} state={{ myAddress: address }}>
-              참여하기
-            </Link>
-          </button>
+          <Link to={'/whoyou'} state={{ myAddress: address }}>
+            <button>참여하기</button>
+          </Link>
         </BtnBox>
       </Middle>
       <div>

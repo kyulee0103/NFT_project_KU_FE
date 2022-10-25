@@ -172,7 +172,7 @@ function NFT_form() {
             <p>혜택 지급 이후 수집한 정보는 파기됩니다.</p>
           </Bottom>
           <Btn>
-            <button type="submit">등록하기</button>
+            <button type="submit">민팅 받기</button>
           </Btn>
         </form>
       </FormBox>

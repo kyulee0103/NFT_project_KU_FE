@@ -142,6 +142,7 @@ function NFT_Main() {
   console.log('this is my data', myNFTData);
   const sharing = () => {
     if (navigator.share) {
+      alert('공유하기 가능한 환경입니다!');
       navigator.share({
         files: [myNFTData.metadata.image],
       });
@@ -165,7 +166,12 @@ function NFT_Main() {
       </Left>
       <Middle>
         <img src={myNFTData.metadata.image} alt="이미지 안떠요"></img>
-        <button onClick={sharing}>{myNFTData.character} 자랑하러 가기</button>
+        <button
+          onClick={() => {
+            sharing();
+          }}>
+          {myNFTData.character} 자랑하러 가기
+        </button>
       </Middle>
       <Detail>
         <Up>
