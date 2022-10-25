@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
@@ -25,40 +25,40 @@ const LogoDIv = styled.div`
 `;
 
 function Hello() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     navigate('/Main');
-  //   }, 6000);
-  //   return () => {
-  //     clearTimeout(timeoutId);
-  //   };
-  // }, []);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      navigate('/Main');
+    }, 6000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
-  const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
-  console.log(newUrl);
+  // const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
+  // console.log(newUrl);
 
-  const downloadNFT = () => {
-    const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
-    fetch(url, {
-      mode: 'no-cors',
-      method: 'GET',
-      headers: {
-        Origin: 'https://bummy-suri.com',
-      },
-    })
-      .then(res => {
-        return res.blob();
-      })
-      .then(blob => {
-        saveAs(blob, 'myNFT');
-        // setOpen(false);
-      })
-      .catch(err => {
-        console.error('error : ', err);
-      });
-  };
+  // const downloadNFT = () => {
+  //   const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
+  //   fetch(url, {
+  //     mode: 'no-cors',
+  //     method: 'GET',
+  //     headers: {
+  //       Origin: 'https://bummy-suri.com',
+  //     },
+  //   })
+  //     .then(res => {
+  //       return res.blob();
+  //     })
+  //     .then(blob => {
+  //       saveAs(blob, 'myNFT');
+  //       // setOpen(false);
+  //     })
+  //     .catch(err => {
+  //       console.error('error : ', err);
+  //     });
+  // };
 
   // const cardRef = useRef<HTMLImageElement>(null);
   // const onDownloadBtn = () => {
