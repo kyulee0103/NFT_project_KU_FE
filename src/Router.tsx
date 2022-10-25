@@ -6,6 +6,7 @@ import NFTloading from './routes/afterCW/NFT_loading';
 import NFTMain from './routes/afterCW/NFT_Main';
 import Game from './routes/afterCW/Game';
 import Bet from './routes/afterCW/Bet';
+import Market from './routes/afterCW/NFT_Market';
 import './router.css';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import NFTform from './routes/afterCW/NFT_form';
@@ -19,6 +20,7 @@ function Router() {
           <Route path="/start" element={<NFTFirst />}></Route>
           <Route path="/whoyou" element={<NFTform />}></Route>
           <Route path="/loading" element={<NFTloading />}></Route>
+          <Route path="/market" element={<Market />}></Route>
           <Route path="/myNFT" element={<NFTMain />}></Route>
           <Route path="/game" element={<Game />}></Route>
           <Route path="/bet" element={<Bet />}></Route>

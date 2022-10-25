@@ -225,7 +225,6 @@ function NFT_First() {
       data.isMinted
         ? navigate('/myNFT', {
             state: {
-              myAddress: address,
               myNFTData: data,
             },
           })
