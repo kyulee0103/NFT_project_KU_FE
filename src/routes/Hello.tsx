@@ -44,7 +44,7 @@ function Hello() {
       mode: 'cors',
       method: 'GET',
       headers: {
-        origin: '*',
+        Origin: 'https://bummy-suri.com',
       },
     })
       .then(res => {
@@ -61,7 +61,7 @@ function Hello() {
 
   return (
     <LogoDIv height={window.innerHeight}>
-      <img src={moving} style={{ width: '300px', height: '300px' }} />
+      <img src={moving} style={{ width: '240px', height: '190px' }} />
       <img style={{ width: '200px' }} src="https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png"></img>
       <button onClick={() => downloadNFT()}>이미지 다운로드 받기</button>/
     </LogoDIv>
