@@ -39,47 +39,47 @@ function Hello() {
   const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
   console.log(newUrl);
 
-  // const downloadNFT = () => {
-  //   const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
-  //   fetch(url, {
-  //     mode: 'no-cors',
-  //     method: 'GET',
-  //     headers: {
-  //       Origin: 'https://bummy-suri.com',
-  //     },
-  //   })
-  //     .then(res => {
-  //       return res.blob();
-  //     })
-  //     .then(blob => {
-  //       saveAs(blob, 'myNFT');
-  //       // setOpen(false);
-  //     })
-  //     .catch(err => {
-  //       console.error('error : ', err);
-  //     });
-  // };
-
-  const cardRef = useRef<HTMLImageElement>(null);
-  const onDownloadBtn = () => {
-    const card = cardRef?.current;
-    if (!card) {
-      return;
-    }
-    domtoimage.toBlob(card).then(blob => {
-      saveAs(blob, 'card.png');
-    });
+  const downloadNFT = () => {
+    const url = 'https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png';
+    fetch(url, {
+      mode: 'no-cors',
+      method: 'GET',
+      headers: {
+        Origin: 'https://bummy-suri.com',
+      },
+    })
+      .then(res => {
+        return res.blob();
+      })
+      .then(blob => {
+        saveAs(blob, 'myNFT');
+        // setOpen(false);
+      })
+      .catch(err => {
+        console.error('error : ', err);
+      });
   };
+
+  // const cardRef = useRef<HTMLImageElement>(null);
+  // const onDownloadBtn = () => {
+  //   const card = cardRef?.current;
+  //   if (!card) {
+  //     return;
+  //   }
+  //   domtoimage.toBlob(card).then(blob => {
+  //     saveAs(blob, 'card.png');
+  //   });
+  // };
 
   return (
     <LogoDIv height={window.innerHeight}>
-      {/* <img src={moving} style={{ width: '240px', height: '230px' }} /> */}
-      <img
+      <img src={moving} style={{ width: '240px', height: '230px' }} />
+      {/* <img
         className="card"
         ref={cardRef}
         style={{ width: '200px' }}
         src="https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png"></img>
-      <button onClick={() => onDownloadBtn()}>이미지 다운로드 받기</button>/
+      <button onClick={() => onDownloadBtn()}>이미지 다운로드 받기</button>/ */}
     </LogoDIv>
   );
 }
