@@ -250,9 +250,9 @@ function NFT_First() {
     });
   }, []);
 
-  if (!ready) {
-    return null;
-  }
+  // if (!ready) {
+  //   return null;
+  // }
 
   return (
     <Total height={window.innerHeight}>
