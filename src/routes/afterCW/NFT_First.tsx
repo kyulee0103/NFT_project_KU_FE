@@ -65,7 +65,7 @@ const Middle = styled.div`
   width: 100%;
   /* background-color: #ff000056; */
   position: absolute;
-  top: 30vh;
+  top: 32vh;
   z-index: 100;
   height: 35vh;
   padding-left: 12vw;
