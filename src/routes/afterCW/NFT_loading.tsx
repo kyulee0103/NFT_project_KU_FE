@@ -80,6 +80,7 @@ function NFT_loading() {
         state: {
           myNFTData: data,
         },
+        replace: true,
       });
     }
 

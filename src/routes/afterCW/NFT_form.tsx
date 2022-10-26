@@ -97,6 +97,7 @@ function NFT_form() {
             studentNumber: studentNum,
           },
         },
+        replace: true,
       });
 
       console.log(school, name, studentNum, phone, myAddress);
