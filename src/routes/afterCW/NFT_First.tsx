@@ -198,7 +198,7 @@ function NFT_First() {
       // 민팅 데이터 셋팅
       const { data: mintNumberData } = await axios.get('https://angry-dongmin.com/counts');
       const { korea: koreaMintNumber, yonsei: yonseiMintNumber } = mintNumberData;
-      setMintNum({ korea: Number(koreaMintNumber) - 400, yonsei: Number(yonseiMintNumber) - 400 });
+      setMintNum({ korea: Number(koreaMintNumber), yonsei: Number(yonseiMintNumber) });
 
       // 지갑 주소셋팅
       try {
