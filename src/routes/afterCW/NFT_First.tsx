@@ -5,7 +5,8 @@ import BlurImg from '../../assets/nft_game/blur.png';
 import Title from '../../assets/firstTitle.png';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { Link, Navigate, useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { prepare, request } from 'klip-sdk';
 
 interface ITotal {
   height?: number;
@@ -169,12 +170,16 @@ const BlurBox = styled.div`
   top: 140px;
 `;
 
+const APP_NAME = 'BUMISURI';
+const SUCCESSLINK = 'https://www.bummy-suri.com/start';
+const FAILLINK = 'https://www.bummy-suri.com/';
+
 function NFT_First() {
   // animation 용 state
   const [after, setAfter] = useState<boolean>(false);
 
   // 페이지 접근시 필요
-  const requestKey = localStorage.getItem('BUMISURI_NFT');
+  const [requestKey, setRequestKey] = useState<string>(localStorage.getItem('BUMISURI_NFT') || '');
   const [ready, setReady] = useState<boolean>(false);
   const [mintNum, setMintNum] = useState<{ korea: number; yonsei: number }>({ korea: 0, yonsei: 0 });
   const walletAdress = useRef<string>('');
@@ -189,9 +194,32 @@ function NFT_First() {
   }, []);
 
   useEffect(() => {
+    async function loadRequestKeyWhenNewBrowser() {
+      if (!requestKey) {
+        try {
+          alert('새로운 브라우저로 접근하여, Klip 재서명이 필요합니다.');
+          const prepareResult = await prepare.auth({
+            bappName: APP_NAME,
+            successLink: SUCCESSLINK,
+            failLink: FAILLINK,
+          });
+          setRequestKey(prepareResult.request_key);
+          localStorage.setItem('BUMISURI_NFT', prepareResult.request_key);
+          request(prepareResult.request_key, () => alert('모바일에서 실행해주세요.'));
+          return;
+        } catch (error) {
+          console.log(error, 'error!!!!!!');
+          return;
+        }
+      }
+    }
+    loadRequestKeyWhenNewBrowser();
+  }, [requestKey]);
+
+  useEffect(() => {
     // 초기 셋팅
     async function loadInitialMintNumber() {
-      if (ready) {
+      if (ready || !requestKey) {
         return;
       }
 
@@ -202,15 +230,13 @@ function NFT_First() {
 
       // 지갑 주소셋팅
       try {
-        if (requestKey) {
-          const { data: kilpwalletData } = await axios.get(
-            `https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`
-          );
+        const { data: kilpwalletData } = await axios.get(
+          `https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${requestKey}`
+        );
 
-          if (kilpwalletData?.result) {
-            const { klaytn_address: userWalletAddress } = kilpwalletData.result;
-            walletAdress.current = userWalletAddress;
-          }
+        if (kilpwalletData?.result) {
+          const { klaytn_address: userWalletAddress } = kilpwalletData.result;
+          walletAdress.current = userWalletAddress;
         }
       } catch (error) {
         // ignore get wallet addresss error
@@ -220,7 +246,7 @@ function NFT_First() {
       setReady(true);
     }
     loadInitialMintNumber();
-  }, []);
+  }, [ready, requestKey]);
 
   const handleJoinClip = useCallback(async () => {
     if (!walletAdress.current) {
