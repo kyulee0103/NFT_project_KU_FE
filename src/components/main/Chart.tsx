@@ -29,8 +29,8 @@ function Chart() {
   const [mintNum, setMintNum] = useState<number[]>([]);
   useEffect(() => {
     axios.get('https://angry-dongmin.com/counts').then(res => {
-      const koreaNum = Number(res.data.korea);
-      const yonseiNum = Number(res.data.yonsei);
+      const koreaNum = Number(res.data.korea) - 300;
+      const yonseiNum = Number(res.data.yonsei) - 300;
       setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
     });
   }, []);
