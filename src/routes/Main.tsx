@@ -64,8 +64,7 @@ function Main() {
     try {
       const prepareResult = await prepare.auth({ bappName: APP_NAME, successLink: SUCCESSLINK, failLink: FAILLINK });
       const requestKey = prepareResult.request_key;
-      request(requestKey, () => alert('모바일에서 실행하셈'));
-      localStorage.setItem('BUMISURI_NFT', requestKey);
+      request(requestKey, () => alert('모바일에서 실행해주세요.'));
     } catch (error) {
       console.log(error, 'error!!!!!!');
       return null;
