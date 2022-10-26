@@ -48,10 +48,7 @@ function Chart() {
         </Line>
         <Line>
           <White>
-            <UnderL>
-              {' '}
-              {mintNum[0] - mintNum[1] >= 0 ? mintNum[0] - mintNum[1] - 400 : mintNum[1] - mintNum[0] - 400}점 차이
-            </UnderL>
+            <UnderL> {mintNum[0] - mintNum[1] >= 0 ? mintNum[0] - mintNum[1] : mintNum[1] - mintNum[0]}점 차이</UnderL>
           </White>
           <Black>로 </Black>
           <White>민팅 필승! 전승! 압승!</White>
