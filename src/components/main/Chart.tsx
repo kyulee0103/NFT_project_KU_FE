@@ -29,8 +29,8 @@ function Chart() {
   const [mintNum, setMintNum] = useState<number[]>([]);
   useEffect(() => {
     axios.get('https://angry-dongmin.com/counts').then(res => {
-      const koreaNum = Number(res.data.korea);
-      const yonseiNum = Number(res.data.yonsei);
+      const koreaNum = Number(res.data.korea) - 400;
+      const yonseiNum = Number(res.data.yonsei) - 400;
       setMintNum(mintNum => [...mintNum, koreaNum, yonseiNum]);
     });
   }, []);
@@ -48,7 +48,10 @@ function Chart() {
         </Line>
         <Line>
           <White>
-            <UnderL> {mintNum[0] - mintNum[1] >= 0 ? mintNum[0] - mintNum[1] : mintNum[1] - mintNum[0]}점 차이</UnderL>
+            <UnderL>
+              {' '}
+              {mintNum[0] - mintNum[1] >= 0 ? mintNum[0] - mintNum[1] - 400 : mintNum[1] - mintNum[0] - 400}점 차이
+            </UnderL>
           </White>
           <Black>로 </Black>
           <White>민팅 필승! 전승! 압승!</White>
