@@ -171,13 +171,14 @@ function Market() {
     });
   }
 
-  // function onClickPoint(price: number) {
-  //   if (!myPoint) {
-  //     // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
-  //     return;
-  //   }
-  //   myPoint >= price ? minus(price) : null;
-  // }
+  const onClickPoint = (price: number) => {
+    if (!myPoint) {
+      // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
+      return;
+    } else {
+      myPoint >= price ? minus(price) : null;
+    }
+  };
 
   return (
     <>
@@ -218,7 +219,7 @@ function Market() {
             </EachImg>
             <EachImg>
               <img src={Fifth} />
-              <Btn>응모</Btn>
+              <Btn onClick={() => onClickPoint(1000)}>응모</Btn>
             </EachImg>
           </SecondLine>
         </PrizeBox>
