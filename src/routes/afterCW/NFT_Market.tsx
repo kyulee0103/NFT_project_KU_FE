@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Score from '../../assets/nft_game/score.png';
-import First from '../../assets/prize/firstPrize.png';
-import Second from '../../assets/prize/secondPrize.png';
-import Third from '../../assets/prize/thirdPrize.png';
-import Fourth from '../../assets/prize/fourthPrize.png';
-import Fifth from '../../assets/prize/fifthPrize.png';
+import First from '../../assets/prize/one.svg';
+import Second from '../../assets/prize/second.svg';
+import Third from '../../assets/prize/third.svg';
+import Fourth from '../../assets/prize/fourth.svg';
+import Fifth from '../../assets/prize/fifth.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -178,7 +178,11 @@ function Market() {
       // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
       return;
     } else {
-      myPoint >= price ? minus(price) : alert('포인트가 부족해요 🥺');
+      if (myPoint >= price) {
+        minus(price);
+      } else {
+        alert('포인트가 부족해요 🥺');
+      }
     }
   };
 
