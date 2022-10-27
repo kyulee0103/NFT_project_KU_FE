@@ -171,13 +171,13 @@ function Market() {
     });
   }
 
-  function onClickPoint(price: number) {
-    if (!myPoint) {
-      // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
-      return;
-    }
-    myPoint >= price ? minus(price) : alert('포인트가 부족합니다 🥺');
-  }
+  // function onClickPoint(price: number) {
+  //   if (!myPoint) {
+  //     // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
+  //     return;
+  //   }
+  //   myPoint >= price ? minus(price) : null;
+  // }
 
   return (
     <>
@@ -199,28 +199,26 @@ function Market() {
         <PrizeBox>
           <PrizeTop>
             <img src={First} />
-            <BtnTop onClick={() => onClickPoint(5000)}>응모</BtnTop>
+            <BtnTop>응모</BtnTop>
           </PrizeTop>
           <SecondLine>
             <EachImg>
               <img src={Second} />
-              <Btn onClick={() => onClickPoint(4000)}>응모</Btn>
+              <Btn>응모</Btn>
             </EachImg>
             <EachImg>
               <img src={Third} />
-              <Btn onClick={() => onClickPoint(3000)}>응모</Btn>
+              <Btn>응모</Btn>
             </EachImg>
           </SecondLine>
           <SecondLine>
             <EachImg>
               <img src={Fourth} />
-              <Btn onClick={() => onClickPoint(2000)} style={{ bottom: '10px' }}>
-                응모
-              </Btn>
+              <Btn style={{ bottom: '10px' }}>응모</Btn>
             </EachImg>
             <EachImg>
               <img src={Fifth} />
-              <Btn onClick={() => onClickPoint(1000)}>응모</Btn>
+              <Btn>응모</Btn>
             </EachImg>
           </SecondLine>
         </PrizeBox>
