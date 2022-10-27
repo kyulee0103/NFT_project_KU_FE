@@ -8,6 +8,8 @@ import Spon4 from '../../assets/klaytn.png';
 import Spon5 from '../../assets/spon1.png';
 import Spon6 from '../../assets/spon3.png';
 import Spon7 from '../../assets/spon4.png';
+import Spon8 from '../../assets/num6.png';
+import Spon9 from '../../assets/num7.png';
 import ScrollRevealSlideAnimation from './MyAnimation';
 
 const LastPage = styled.div`
@@ -157,10 +159,16 @@ function LastBox() {
                 <img src={Spon4} style={{ width: '59px', height: '13px' }} alt="img" />
               </SponImg>
               <SponImg>
+                <img src={Spon9} style={{ width: '59px' }} alt="img" />
+              </SponImg>
+              <SponImg>
                 <img src={Spon6} style={{ width: '59px' }} alt="img" />
               </SponImg>
               <SponImg>
-                <img src={Spon7} style={{ width: '59px', height: '13px' }} alt="img" />
+                <img src={Spon7} style={{ width: '59px' }} alt="img" />
+              </SponImg>
+              <SponImg>
+                <img src={Spon8} style={{ width: '59px' }} alt="img" />
               </SponImg>
             </SponImgBox>
           </Sponsor>
