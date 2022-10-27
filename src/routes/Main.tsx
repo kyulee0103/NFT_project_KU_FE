@@ -27,7 +27,7 @@ const BTNdiv = styled.div`
   text-align: center;
   margin-top: 20px;
   position: fixed;
-  bottom: 5vh;
+  bottom: 4vh;
   display: flex;
   justify-content: center;
   width: 100%;
