@@ -230,7 +230,7 @@ function NFT_Main() {
             </Link>
           </Btn>
         </BtnBox>
-        {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null}
+        {/* {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null} */}
         <img src={Shadow} />
       </ShadowBox>
     </>
