@@ -167,7 +167,7 @@ function Market() {
         itemCode: productId.toString(),
       },
     }).then(({ data }) => {
-      alert('상품에 응모가 되었습니다 🔥');
+      alert('상품 응모 완료 🔥🔥');
       if (myPoint != undefined) {
         setMyPoint(data.pointsLeft);
       }
