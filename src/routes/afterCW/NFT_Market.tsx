@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Score from '../../assets/nft_game/score.png';
-import First from '../../assets/prize/one.svg';
-import Second from '../../assets/prize/second.svg';
-import Third from '../../assets/prize/third.svg';
-import Fourth from '../../assets/prize/fourth.svg';
-import Fifth from '../../assets/prize/fifth.svg';
+import First from '../../assets/prize/firstPrize.png';
+import Second from '../../assets/prize/secondPrize.png';
+import Third from '../../assets/prize/thirdPrize.png';
+import Fourth from '../../assets/prize/fourthPrize.png';
+import Fifth from '../../assets/prize/fifthPrize.png';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -34,7 +34,7 @@ const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  left: 51px;
+  right: 10px;
 `;
 
 const Middle = styled.div`
@@ -65,9 +65,6 @@ const PrizeBox = styled.div`
 `;
 const PrizeTop = styled.div`
   position: relative;
-  img {
-    width: 100%;
-  }
 `;
 const BtnTop = styled.button`
   position: absolute;
@@ -155,7 +152,6 @@ function Market() {
   }, []);
   function minus(point: number) {
     const productId = 6 - point / 1000;
-    alert(`productId : ${productId}`);
 
     axios({
       url: 'https://angry-dongmin.com/bet',
@@ -173,9 +169,7 @@ function Market() {
   }
 
   const onClickPoint = (price: number) => {
-    alert(`지금 이거 가격 : ${price}`);
     if (!myPoint) {
-      // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
       return;
     } else {
       if (myPoint >= price) {
@@ -205,28 +199,28 @@ function Market() {
         </Line>
         <PrizeBox>
           <PrizeTop>
-            <img src={First} />
+            <img style={{ width: '330px' }} src={First} />
             <BtnTop onClick={() => onClickPoint(5000)}>응모</BtnTop>
           </PrizeTop>
           <SecondLine>
             <EachImg>
-              <img src={Second} />
+              <img style={{ width: '158px' }} src={Second} />
               <Btn onClick={() => onClickPoint(4000)}>응모</Btn>
             </EachImg>
             <EachImg>
-              <img src={Third} />
+              <img style={{ width: '158px' }} src={Third} />
               <Btn onClick={() => onClickPoint(3000)}>응모</Btn>
             </EachImg>
           </SecondLine>
           <SecondLine>
             <EachImg>
-              <img src={Fourth} />
+              <img style={{ width: '158px' }} src={Fourth} />
               <Btn onClick={() => onClickPoint(2000)} style={{ bottom: '10px' }}>
                 응모
               </Btn>
             </EachImg>
             <EachImg>
-              <img src={Fifth} />
+              <img style={{ width: '158px' }} src={Fifth} />
               <Btn onClick={() => onClickPoint(1000)}>응모</Btn>
             </EachImg>
           </SecondLine>
