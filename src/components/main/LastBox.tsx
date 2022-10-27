@@ -47,7 +47,7 @@ const CarouselBox = styled.div`
   /* margin-top: 30px; */
 `;
 const Sponsor = styled.div`
-  height: 200px;
+  height: 250px;
   margin: 40px auto;
   /* margin-right: 30px; */
   width: 300px;
@@ -90,14 +90,16 @@ const SponTitle = styled.div`
     color: white;
     font-weight: 600;
     letter-spacing: 3px;
+    margin-top: 50px;
   }
   text-align: center;
   margin-bottom: 10px;
+  margin-top: 20px;
 `;
 const SponImgBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   align-items: center;
 `;
 const SponImg = styled.div`
@@ -161,6 +163,8 @@ function LastBox() {
               <SponImg>
                 <img src={Spon9} style={{ width: '59px' }} alt="img" />
               </SponImg>
+            </SponImgBox>
+            <SponImgBox>
               <SponImg>
                 <img src={Spon6} style={{ width: '59px' }} alt="img" />
               </SponImg>
