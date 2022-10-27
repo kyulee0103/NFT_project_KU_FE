@@ -34,7 +34,7 @@ const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  left: 53px;
+  left: 52px;
 `;
 
 const Middle = styled.div`
@@ -155,7 +155,6 @@ function Market() {
   }, []);
   function minus(point: number) {
     const productId = point / 1000;
-
     axios({
       url: 'https://angry-dongmin.com/bet',
       method: 'post',
@@ -164,7 +163,7 @@ function Market() {
         itemCode: productId.toString(),
       },
     }).then(({ data }) => {
-      alert('상품에 응모가 되었습니다!');
+      data.resultCode == '400' ? alert('포인트가 부족합니다!') : alert('상품에 응모가 되었습니다!');
       if (myPoint != undefined) {
         setMyPoint(data.pointsLeft);
       }
@@ -172,11 +171,12 @@ function Market() {
   }
 
   const onClickPoint = (price: number) => {
+    alert(`지금 이거 가격 : ${price}`);
     if (!myPoint) {
       // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
       return;
     } else {
-      myPoint >= price ? minus(price) : null;
+      myPoint >= price ? minus(price) : alert('');
     }
   };
 
@@ -200,22 +200,24 @@ function Market() {
         <PrizeBox>
           <PrizeTop>
             <img src={First} />
-            <BtnTop>응모</BtnTop>
+            <BtnTop onClick={() => onClickPoint(5000)}>응모</BtnTop>
           </PrizeTop>
           <SecondLine>
             <EachImg>
               <img src={Second} />
-              <Btn>응모</Btn>
+              <Btn onClick={() => onClickPoint(4000)}>응모</Btn>
             </EachImg>
             <EachImg>
               <img src={Third} />
-              <Btn>응모</Btn>
+              <Btn onClick={() => onClickPoint(3000)}>응모</Btn>
             </EachImg>
           </SecondLine>
           <SecondLine>
             <EachImg>
               <img src={Fourth} />
-              <Btn style={{ bottom: '10px' }}>응모</Btn>
+              <Btn onClick={() => onClickPoint(2000)} style={{ bottom: '10px' }}>
+                응모
+              </Btn>
             </EachImg>
             <EachImg>
               <img src={Fifth} />
