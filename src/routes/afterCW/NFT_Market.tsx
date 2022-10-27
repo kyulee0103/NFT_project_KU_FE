@@ -154,7 +154,9 @@ function Market() {
     });
   }, []);
   function minus(point: number) {
-    const productId = point / 1000;
+    const productId = 6 - point / 1000;
+    alert(`productId : ${productId}`);
+
     axios({
       url: 'https://angry-dongmin.com/bet',
       method: 'post',
