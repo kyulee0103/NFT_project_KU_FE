@@ -4,7 +4,8 @@ import PurpleDot from '../../assets/nft_game/purpledot.png';
 import Shadow from '../../assets/nft_game/bottom.png';
 import { Link, useLocation } from 'react-router-dom';
 import NoOpenModal from '../../components/main/NoModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Top = styled.div`
   color: white;
@@ -32,7 +33,7 @@ const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  left: 47px;
+  left: 53px;
 `;
 const Middle = styled.div`
   display: flex;
@@ -138,18 +139,10 @@ interface RouteState {
 }
 
 function NFT_Main() {
+  const [myPoint, setMyPoint] = useState<number>();
   const location = useLocation();
   const { myNFTData } = location?.state as RouteState;
   console.log('this is my data', myNFTData);
-  const sharing = () => {
-    // if (navigator.share) {
-    //   navigator.share({
-    //     files: [myNFTData.metadata.image],
-    //   });
-    // } else {
-    //   alert('공유하기가 지원되지 않는 환경입니다..');
-    // }
-  };
   const [noopenModal, setNoOpenModal] = useState(false);
   const onClick = () => {
     setNoOpenModal(prev => !prev);
@@ -158,6 +151,18 @@ function NFT_Main() {
     alert(`${JSON.stringify(myNFTData)} my address : ${myNFTData.userAddr}`);
   }
 
+  useEffect(() => {
+    axios({
+      url: 'https://angry-dongmin.com/myPoints',
+      method: 'post',
+      data: {
+        userAddr: myNFTData.userAddr,
+      },
+    }).then(({ data }) => {
+      setMyPoint(data.points);
+    });
+  });
+
   return (
     <>
       <Top>
@@ -165,13 +170,13 @@ function NFT_Main() {
       </Top>
       <Left>
         <img src={Score}></img>
-        <Point>500</Point>
+        <Point>{myPoint == null ? '' : myPoint}</Point>
       </Left>
       <Middle>
         <img src={myNFTData.metadata.image} alt="이미지 안떠요"></img>
         <button
           onClick={() => {
-            sharing();
+            // sharing();
           }}>
           {myNFTData.username}님의 {myNFTData.character} NFT
         </button>
@@ -215,7 +220,15 @@ function NFT_Main() {
               정기전 예측하기
             </Link>
           </Btn>
-          <Btn onClick={onClick}>경품 응모하기</Btn>
+          <Btn>
+            <Link
+              to="/market"
+              state={{
+                myNFTData: myNFTData,
+              }}>
+              경품 응모하기
+            </Link>
+          </Btn>
         </BtnBox>
         {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null}
         <img src={Shadow} />

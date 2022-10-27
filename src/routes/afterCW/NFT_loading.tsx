@@ -48,6 +48,7 @@ function NFT_loading() {
   const navigate = useNavigate();
   const location = useLocation();
   const { myData } = location?.state as RouteState;
+
   const axiosResponseRef = useRef<boolean>(false);
 
   useEffect(() => {
