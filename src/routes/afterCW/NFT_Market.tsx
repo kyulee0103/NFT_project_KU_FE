@@ -199,28 +199,28 @@ function Market() {
         <PrizeBox>
           <PrizeTop>
             <img src={First} />
-            <BtnTop onClick={onClickPoint(5000)}>응모</BtnTop>
+            <BtnTop onClick={() => onClickPoint(5000)}>응모</BtnTop>
           </PrizeTop>
           <SecondLine>
             <EachImg>
               <img src={Second} />
-              <Btn onClick={onClickPoint(4000)}>응모</Btn>
+              <Btn onClick={() => onClickPoint(4000)}>응모</Btn>
             </EachImg>
             <EachImg>
               <img src={Third} />
-              <Btn onClick={onClickPoint(3000)}>응모</Btn>
+              <Btn onClick={() => onClickPoint(3000)}>응모</Btn>
             </EachImg>
           </SecondLine>
           <SecondLine>
             <EachImg>
               <img src={Fourth} />
-              <Btn onClick={onClickPoint(2000)} style={{ bottom: '10px' }}>
+              <Btn onClick={() => onClickPoint(2000)} style={{ bottom: '10px' }}>
                 응모
               </Btn>
             </EachImg>
             <EachImg>
               <img src={Fifth} />
-              <Btn onClick={onClickPoint(1000)}>응모</Btn>
+              <Btn onClick={() => onClickPoint(1000)}>응모</Btn>
             </EachImg>
           </SecondLine>
         </PrizeBox>
