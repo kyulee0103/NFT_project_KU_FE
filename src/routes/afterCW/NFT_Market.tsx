@@ -165,7 +165,7 @@ function Market() {
         itemCode: productId.toString(),
       },
     }).then(({ data }) => {
-      data.resultCode == '400' ? alert('포인트가 부족해요 🥺') : alert('상품에 응모가 되었습니다 🔥');
+      alert('상품에 응모가 되었습니다 🔥');
       if (myPoint != undefined) {
         setMyPoint(data.pointsLeft);
       }
@@ -178,7 +178,7 @@ function Market() {
       // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
       return;
     } else {
-      myPoint >= price ? minus(price) : null;
+      myPoint >= price ? minus(price) : alert('포인트가 부족해요 🥺');
     }
   };
 
