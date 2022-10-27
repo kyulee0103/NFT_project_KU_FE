@@ -33,7 +33,7 @@ const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  right: 11px;
+  right: 13px;
 `;
 const Middle = styled.div`
   display: flex;

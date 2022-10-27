@@ -34,7 +34,7 @@ const Point = styled.p`
   font-size: 15px;
   position: absolute;
   top: 12px;
-  right: 11px;
+  right: 13px;
 `;
 
 const Middle = styled.div`
@@ -65,6 +65,11 @@ const PrizeBox = styled.div`
 `;
 const PrizeTop = styled.div`
   position: relative;
+  border: 0px;
+  background: #1d1b23;
+  border-radius: 15px;
+  width: 332px;
+  height: 228px;
 `;
 const BtnTop = styled.button`
   position: absolute;
@@ -88,9 +93,10 @@ const SecondLine = styled.div`
 const EachImg = styled.div`
   position: relative;
   width: 47%;
-  img {
-    width: 100%;
-  }
+  width: 158px;
+  height: 164px;
+  background-color: #1d1b23;
+  border-radius: 15px;
 `;
 
 const Btn = styled.button`
