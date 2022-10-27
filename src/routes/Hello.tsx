@@ -17,6 +17,8 @@ interface IHeight {
 const LogoDIv = styled.div`
   height: ${(props: IHeight) => props.height};
   display: flex;
+  width: 90%;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -25,16 +27,16 @@ const LogoDIv = styled.div`
 `;
 
 function Hello() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      navigate('/Main');
-    }, 6000);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     navigate('/Main');
+  //   }, 6000);
+  //   return () => {
+  //     clearTimeout(timeoutId);
+  //   };
+  // }, []);
 
   // const newUrl = new Blob(['https://nftmetadata2022.s3.ap-northeast-2.amazonaws.com/images/1.png']);
   // console.log(newUrl);
@@ -73,7 +75,20 @@ function Hello() {
 
   return (
     <LogoDIv height={window.innerHeight}>
-      <img src={moving} style={{ width: '240px', height: '230px' }} />
+      <p style={{ marginBottom: '20px', color: 'white', fontWeight: 600, fontSize: '25px' }}>
+        🐯 사이트 점검 중이에요 🦅
+      </p>
+      <p style={{ marginBottom: '40px', color: 'white', fontWeight: 500, fontSize: '20px' }}>
+        내일 아침에 다시 만나요 !
+      </p>
+      <img src={moving} style={{ width: '290px', height: '230px' }} />
+      <p style={{ marginTop: '60px', color: 'white', fontWeight: 400, fontSize: '16px' }}>
+        여러분 덕분에 3000마리의 버미와 수리가
+      </p>
+      <p style={{ marginTop: '10px', color: 'white', fontWeight: 400, fontSize: '16px' }}>
+        모두 학우분들과 만날 수 있었어요 🫶
+      </p>
+
       {/* <img
         className="card"
         ref={cardRef}

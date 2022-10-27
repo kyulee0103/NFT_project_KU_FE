@@ -7,7 +7,7 @@ import LastBox from '../components/main/LastBox';
 import { useRef, useEffect, PropsWithChildren } from 'react';
 import { prepare, request } from 'klip-sdk';
 
-const APP_NAME = 'BUMISURI';
+const APP_NAME = 'BUMMY and SURI';
 const SUCCESSLINK = 'https://www.bummy-suri.com/start';
 const FAILLINK = 'https://www.bummy-suri.com/';
 
