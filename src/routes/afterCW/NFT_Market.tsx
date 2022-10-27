@@ -171,13 +171,13 @@ function Market() {
     });
   }
 
-  const onClickPoint = (price: number) => {
+  function onClickPoint(price: number) {
     if (!myPoint) {
       // alert('잠시만 기다려주세요! 포인트 값을 받아오고 있어요 🫶');
       return;
     }
     myPoint >= price ? minus(price) : alert('포인트가 부족합니다 🥺');
-  };
+  }
 
   return (
     <>
