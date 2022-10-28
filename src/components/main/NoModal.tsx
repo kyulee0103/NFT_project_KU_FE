@@ -27,7 +27,7 @@ const Modal = muiStyled(ModalUnstyled)`
 const ModalBox = styled.div`
   position: relative;
   width: 80vw;
-  height: 35vh;
+  height: 45vh;
   border-radius: 8px;
   border: none;
   backdrop-filter: blur(10px);
@@ -89,7 +89,7 @@ const Contents = styled.div`
 `;
 
 const Middle = styled.span`
-  font-size: 16px;
+  font-size: 15px;
   line-height: 25px;
   font-weight: 300;
   z-index: 800;
@@ -125,8 +125,10 @@ function NoOpenModal({ setOpenModal, openModal }: IOpenModal) {
             <Success>정기전 시작🔥</Success>
             <Middle>
               정기전 결과 예측 게임이 종료 되었습니다 <br />
-              이제 열심히 경기 중인 선수들을 응원해주세요! <br />
-              포인트는 금, 토 오후 10시에 업데이트 됩니다 <br />
+              이제 열심히 경기 중인 <br />
+              선수들을 응원해주세요! <br />
+              포인트는 금, 토 오후 10시에 <br />
+              업데이트 됩니다 <br />
               포인트로 상품에 응모 해보세요! <br />
               엄청난 상품들이 잔뜩 준비 되어있어요🫶
             </Middle>
