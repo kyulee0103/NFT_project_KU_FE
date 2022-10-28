@@ -118,7 +118,7 @@ const Bottom = styled.p`
   line-height: 25px;
   font-weight: 300;
   z-index: 800;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 `;
 
 const Box = styled.div`
@@ -144,9 +144,11 @@ function NoOpenModal({ setOpenModal, openModal }: IOpenModal) {
           <Xbtn onClick={closeModal}>X</Xbtn>
           <Contents>
             <Success>정기전 시작🔥</Success>
-            <Middle>
-              정기전 결과 예측 게임이 종료 되었습니다 <br />
-            </Middle>
+            <div style={{ marginBottom: '10px' }}>
+              <Middle>
+                정기전 결과 예측 게임이 종료 되었습니다 <br />
+              </Middle>
+            </div>
             <Small>
               이제 열심히 경기중인 선수들을 응원해주세요! <br />
               포인트는 금,토 오후 10시에 업데이트 됩니다
