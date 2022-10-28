@@ -210,16 +210,7 @@ function NFT_Main() {
       </Detail>
       <ShadowBox>
         <BtnBox>
-          <Btn>
-            {/* <button onClick={showme}>여기가 알러트 버튼 이에요</button> */}
-            <Link
-              to="/game"
-              state={{
-                myNFTData: myNFTData,
-              }}>
-              정기전 예측하기
-            </Link>
-          </Btn>
+          <Btn onClick={onClick}>정기전 예측하기</Btn>
           <Btn>
             <Link
               to="/market"
@@ -230,7 +221,7 @@ function NFT_Main() {
             </Link>
           </Btn>
         </BtnBox>
-        {/* {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null} */}
+        {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null}
         <img src={Shadow} />
       </ShadowBox>
     </>
