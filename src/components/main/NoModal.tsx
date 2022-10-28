@@ -126,18 +126,10 @@ function NoOpenModal({ setOpenModal, openModal }: IOpenModal) {
             <Middle>
               정기전 결과 예측 게임이 종료 되었습니다 <br />
               이제 열심히 경기 중인 선수들을 응원해주세요! <br />
-              포인트는 금, 토 저녁 8시에 업데이트 됩니다 <br />
+              포인트는 금, 토 오후 10시에 업데이트 됩니다 <br />
               포인트로 상품에 응모 해보세요! <br />
               엄청난 상품들이 잔뜩 준비 되어있어요🫶
             </Middle>
-            {/* <ImgBox>
-              <EachBox>
-                <img src={left} style={{ width: '131px' }} />
-              </EachBox>
-              <EachBox>
-                <img src={right} style={{ width: '120px' }} />
-              </EachBox>
-            </ImgBox> */}
           </Contents>
         </ModalBox>
       </Fade>
