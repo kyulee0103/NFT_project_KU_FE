@@ -93,6 +93,7 @@ const Middle = styled.span`
   line-height: 25px;
   font-weight: 600;
   z-index: 800;
+  margin-bottom: 10px;
 `;
 
 const Small = styled.span`
@@ -117,7 +118,12 @@ const Bottom = styled.p`
   line-height: 25px;
   font-weight: 300;
   z-index: 800;
-  margin-top: 15px;
+  margin-bottom: 5px;
+`;
+
+const Box = styled.div`
+  width: 100%;
+  margin-top: 20px;
 `;
 
 function NoOpenModal({ setOpenModal, openModal }: IOpenModal) {
@@ -146,12 +152,14 @@ function NoOpenModal({ setOpenModal, openModal }: IOpenModal) {
               포인트는 금,토 오후 10시에 업데이트 됩니다
               <br />
             </Small>
-            <Bottom>포인트로 상품에 응모 해보세요!</Bottom>
-            <Bottom>
-              엄청난 상품들이 잔뜩 준비 되어있어요
-              <br />
-              🫶
-            </Bottom>
+            <Box>
+              <Bottom>포인트로 상품에 응모 해보세요!</Bottom>
+              <Bottom>
+                엄청난 상품들이 잔뜩 준비 되어있어요
+                <br />
+                🫶
+              </Bottom>
+            </Box>
           </Contents>
         </ModalBox>
       </Fade>
