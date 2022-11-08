@@ -150,7 +150,11 @@ function NoGame({ setOpenModal, openModal }: IOpenModal) {
                 많은 관심 주셔서 감사합니다 🫶
               </Middle>
             </div>
-            <Small>상품 응모 결과는 11월 10일 개별 연락 갈 예정입니다!</Small>
+            <Small>
+              상품 응모 결과는 11월 10일
+              <br />
+              개별 연락 드릴 예정입니다!
+            </Small>
           </Contents>
         </ModalBox>
       </Fade>
