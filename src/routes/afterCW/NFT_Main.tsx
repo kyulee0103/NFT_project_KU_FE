@@ -4,6 +4,7 @@ import PurpleDot from '../../assets/nft_game/purpledot.png';
 import Shadow from '../../assets/nft_game/bottom.png';
 import { Link, useLocation } from 'react-router-dom';
 import NoOpenModal from '../../components/main/NoModal';
+import NoGame from '../../components/main/NoGame';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -144,8 +145,12 @@ function NFT_Main() {
   const { myNFTData } = location?.state as RouteState;
   console.log('this is my data', myNFTData);
   const [noopenModal, setNoOpenModal] = useState(false);
+  const [nogameModal, setNoGameModal] = useState(false);
   const onClick = () => {
     setNoOpenModal(prev => !prev);
+  };
+  const gameonClick = () => {
+    setNoGameModal(prev => !prev);
   };
   function showme() {
     alert(`${JSON.stringify(myNFTData)} my address : ${myNFTData.userAddr}`);
@@ -211,17 +216,10 @@ function NFT_Main() {
       <ShadowBox>
         <BtnBox>
           <Btn onClick={onClick}>정기전 예측하기</Btn>
-          <Btn>
-            <Link
-              to="/market"
-              state={{
-                myNFTData: myNFTData,
-              }}>
-              경품 응모하기
-            </Link>
-          </Btn>
+          <Btn onClick={gameonClick}>경품 응모하기</Btn>
         </BtnBox>
         {noopenModal ? <NoOpenModal setOpenModal={setNoOpenModal} openModal={noopenModal} /> : null}
+        {nogameModal ? <NoGame setOpenModal={setNoGameModal} openModal={nogameModal} /> : null}
         <img src={Shadow} />
       </ShadowBox>
     </>

@@ -188,7 +188,8 @@ function Market() {
 
   return (
     <>
-      <Top>
+      null
+      {/* <Top>
         <Title>경품 응모</Title>
       </Top>
       <Left>
@@ -242,7 +243,7 @@ function Market() {
             메인으로 돌아가기
           </Link>
         </button>
-      </Bottom>
+      </Bottom> */}
     </>
   );
 }

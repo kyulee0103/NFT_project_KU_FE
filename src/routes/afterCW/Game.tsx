@@ -205,42 +205,41 @@ function Game() {
     }
   };
 
-  return (
-    <Total>
-      <Header>
-        <p>정기전 경기 예측</p>
-      </Header>
-      {/* <button onClick={showme}>여기가 알러트 버튼 이에요</button> */}
+  return null;
+  // <Total>
+  //   <Header>
+  //     <p>정기전 경기 예측</p>
+  //   </Header>
+  //   {/* <button onClick={showme}>여기가 알러트 버튼 이에요</button> */}
 
-      <SportTitle>
-        <p>야구 ⚾️</p>
-        <Buttondiv>{renderingButton(sportuniv1, setsportuniv1, setsportopt1)}</Buttondiv>
-      </SportTitle>
-      <Optiondiv>{renderingOption(Baskeballoption, setsportopt1, sportopt1, sportuniv1)}</Optiondiv>
-      <SportTitle>
-        빙구 🏒
-        <Buttondiv>{renderingButton(sportuniv2, setsportuniv2, setsportopt2)}</Buttondiv>
-      </SportTitle>
-      <Optiondiv>{renderingOption(Hockeyoption, setsportopt2, sportopt2, sportuniv2)}</Optiondiv>
-      <SportTitle>
-        농구 🏀
-        <Buttondiv>{renderingButton(sportuniv3, setsportuniv3, setsportopt3)}</Buttondiv>
-      </SportTitle>
-      <Optiondiv>{renderingOption(Basketballoption, setsportopt3, sportopt3, sportuniv3)}</Optiondiv>
-      <SportTitle>
-        럭비 🏈
-        <Buttondiv>{renderingButton(sportuniv4, setsportuniv4, setsportopt4)}</Buttondiv>
-      </SportTitle>
-      <Optiondiv>{renderingOption(Rugbyoption, setsportopt4, sportopt4, sportuniv4)}</Optiondiv>
-      <SportTitle>
-        축구 ⚽<Buttondiv>{renderingButton(sportuniv5, setsportuniv5, setsportopt5)}</Buttondiv>
-      </SportTitle>
-      <Optiondiv>{renderingOption(Socceroption, setsportopt5, sportopt5, sportuniv5)}</Optiondiv>
-      <SubmitButton>
-        <button onClick={() => submit()}>제출하기</button>
-      </SubmitButton>
-    </Total>
-  );
+  //   <SportTitle>
+  //     <p>야구 ⚾️</p>
+  //     <Buttondiv>{renderingButton(sportuniv1, setsportuniv1, setsportopt1)}</Buttondiv>
+  //   </SportTitle>
+  //   <Optiondiv>{renderingOption(Baskeballoption, setsportopt1, sportopt1, sportuniv1)}</Optiondiv>
+  //   <SportTitle>
+  //     빙구 🏒
+  //     <Buttondiv>{renderingButton(sportuniv2, setsportuniv2, setsportopt2)}</Buttondiv>
+  //   </SportTitle>
+  //   <Optiondiv>{renderingOption(Hockeyoption, setsportopt2, sportopt2, sportuniv2)}</Optiondiv>
+  //   <SportTitle>
+  //     농구 🏀
+  //     <Buttondiv>{renderingButton(sportuniv3, setsportuniv3, setsportopt3)}</Buttondiv>
+  //   </SportTitle>
+  //   <Optiondiv>{renderingOption(Basketballoption, setsportopt3, sportopt3, sportuniv3)}</Optiondiv>
+  //   <SportTitle>
+  //     럭비 🏈
+  //     <Buttondiv>{renderingButton(sportuniv4, setsportuniv4, setsportopt4)}</Buttondiv>
+  //   </SportTitle>
+  //   <Optiondiv>{renderingOption(Rugbyoption, setsportopt4, sportopt4, sportuniv4)}</Optiondiv>
+  //   <SportTitle>
+  //     축구 ⚽<Buttondiv>{renderingButton(sportuniv5, setsportuniv5, setsportopt5)}</Buttondiv>
+  //   </SportTitle>
+  //   <Optiondiv>{renderingOption(Socceroption, setsportopt5, sportopt5, sportuniv5)}</Optiondiv>
+  //   <SubmitButton>
+  //     <button onClick={() => submit()}>제출하기</button>
+  //   </SubmitButton>
+  // </Total>
 }
 
 export default Game;
