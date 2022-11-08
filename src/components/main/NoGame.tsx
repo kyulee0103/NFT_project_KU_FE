@@ -151,7 +151,7 @@ function NoGame({ setOpenModal, openModal }: IOpenModal) {
               </Middle>
             </div>
             <Small>
-              상품 응모 결과는 11월 10일
+              상품 응모 결과는 11월 9일
               <br />
               개별 연락 드릴 예정입니다!
             </Small>
