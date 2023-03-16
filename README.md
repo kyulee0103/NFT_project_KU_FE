@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+<img width="396" alt="Screen Shot 2023-03-12 at 4 32 24 PM" src="https://user-images.githubusercontent.com/80827003/225569884-eb3d7d7f-58f0-4995-9299-4c9e48681d98.png">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+### 🔎  카카오톡의 Klip을 통한 지갑 연결
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 카카오톡에 기본으로 설치되어 있는 Klip을 활용하여 유저가 별도의 지갑을 설치하는 과정 없이 지갑 연결 기능을 구현하였습니다.
+- Klip 활용을 위해 App2App Javascript SDK를 이용하여 개발을 진행하였습니다.
+    
+<img width = "300" src = "https://user-images.githubusercontent.com/80827003/225570372-5cc750af-f790-486d-a30c-045b3ed6f4f9.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    
 
-### `npm test`
+### 🔎  실시간 고려대와 연세대의 NFT 민팅 정보 제공
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+- 실시간 고려대와 연세대 학생들의 NFT 민팅 현황을 보여줌으로써 경쟁의식을 불러 일으켜 유저들이 자연스럽게 주변에 프로젝트를 홍보할 수 있도록 유도하였습니다.
+- ApexCharts 라이브러리를 활용하여 실시간 민팅 개수 데이터를 그래프로 시각화하여 표현하였습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width = "300" src = "https://user-images.githubusercontent.com/80827003/225570426-4c2cd188-5fdf-427f-b6f4-a193154dda5a.png">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔎  2022 정기전 경기 예측 게임
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+- 경기의 승패와 점수차를 예측하여 경기 이후 경기 결과에 따라 포인트가 차등 지급되도록 하였습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img width = "300" src = "https://user-images.githubusercontent.com/80827003/225571524-c4e2f2f8-ea60-4434-942f-481dbbab5198.png">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 🔎  경품 응모 기능
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+- 정기전 예측 결과로 획득한 포인트를 이용해 원하는 상품을 응모할 수 있게 하였습니다.
+<img width = "300" src = "https://user-images.githubusercontent.com/80827003/225571761-f7618e1b-1e63-4eea-92f7-17f1295acc89.png">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+    
+    
